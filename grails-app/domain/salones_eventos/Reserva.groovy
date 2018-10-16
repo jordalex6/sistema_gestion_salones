@@ -6,12 +6,19 @@ class Reserva {
     String nro_tarjeta
     String tarjeta
     String codigo_tarjeta
-    java.sql.Date fecha
+    java.sql.Date fecha_actual
+    Date fecha
+    String horario_alquiler 
     java.sql.Time hora
-    java.sql.Date fecha_inicio
-    java.sql.Date fecha_fin
-    BigDecimal monto
+    Time 
+   
+    BigDecimal montoint numero_Salon
+    String tipo_Salon
+    int cantidad_Personas
+    String descripcion_Salon
+    BigDecimal precio
 
     static constraints = {
     }
 }
+
