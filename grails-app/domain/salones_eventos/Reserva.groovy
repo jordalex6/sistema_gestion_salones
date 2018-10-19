@@ -10,9 +10,9 @@ class Reserva {
     Date fecha
     String horario_alquiler 
     java.sql.Time hora
-    Time 
    
-    BigDecimal montoint numero_Salon
+    BigDecimal montoint
+    BigDecimal numero_Salon
     String tipo_Salon
     int cantidad_Personas
     String descripcion_Salon
