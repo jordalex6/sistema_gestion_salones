@@ -11,6 +11,16 @@ class Reserva {
     
 
     static constraints = {
+        fecha_reserva(blank:false, validator: {val, Reserva obj ->
+            if(val < fecha_actual){
+                return ['Error']
+            }
     }
+     precio(blank:false, validator: {val, Reserva obj ->
+            if(val < 0){
+                return ['Error']
+            }
+    }
+
 }
 
