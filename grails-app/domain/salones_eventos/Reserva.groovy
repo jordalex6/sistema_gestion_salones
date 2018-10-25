@@ -2,24 +2,25 @@ package salones_eventos
 
 class Reserva {
 
-    Cliente Cliente
+    //Cliente cliente
     Salon salon
     Date fecha_actual
     Date fecha_reserva
-     
-    float precio
+    BigDecimal precio
     
 
     static constraints = {
+        fecha_actual (blank:false)
         fecha_reserva(blank:false, validator: {val, Reserva obj ->
-            if(val < fecha_actual){
+            if(val < new Date(System.currentTimeMillis())){
                 return ['Error']
             }
-    }
-     precio(blank:false, validator: {val, Reserva obj ->
+        })
+        precio(blank:false, validator: {val ->
             if(val < 0){
                 return ['Error']
             }
+        })
     }
 
 }

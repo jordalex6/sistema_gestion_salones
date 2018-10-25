@@ -1,6 +1,6 @@
 package salones_eventos
 
-class Propietario {
+class Cliente {
 
     static constraints = {
     }
