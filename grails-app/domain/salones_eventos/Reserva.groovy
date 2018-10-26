@@ -2,12 +2,13 @@ package salones_eventos
 
 class Reserva {
 
-    //Cliente cliente
+    Cliente cliente
     Salon salon
     Date fecha_actual
     Date fecha_reserva
     BigDecimal precio
-    
+    boolean cancelada
+     static belongsTo= [cliente: Cliente,salon:Salon]
 
     static constraints = {
         fecha_actual (blank:false)
