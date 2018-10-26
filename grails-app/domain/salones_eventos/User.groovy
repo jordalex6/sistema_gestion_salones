@@ -15,15 +15,33 @@ class User implements Serializable {
 
     String username
     String password
- /*    String email 
+    String email 
     String firstName 
     String lastName
     String phone
-    Date birthday */
+    Date birthday
+
+    /* Propietario propietario
+    Cliente cliente
+ */
     boolean enabled = true
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+
+    static hasOne = [cliente : Cliente, propietario: Propietario]
+
+    static constraints = {
+        password nullable: false, blank: false, password: true
+        username nullable: false, blank: false, unique: true
+        email nullable: true, blank: true
+        firstName nullable: true, blank: true
+        lastName nullable: true, blank: true
+        phone nullable: true, blank: true
+        birthday nullable: true, blank: true
+        cliente nullable: true, unique:true
+        propietario nullable: true, unique:true
+    }
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
@@ -44,12 +62,6 @@ class User implements Serializable {
 	}
 
 	static transients = ['springSecurityService']
-
-
-    static constraints = {
-        password nullable: false, blank: false, password: true
-        username nullable: false, blank: false, unique: true
-    }
 
     static mapping = {
         table '`user`'
