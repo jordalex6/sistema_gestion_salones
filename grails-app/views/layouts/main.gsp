@@ -38,7 +38,11 @@
 
     <g:layoutBody/>
 
-    <div class="footer" role="contentinfo"></div>
+    <div class="footer" role="contentinfo">
+        <footer class="container-fluid text-center">
+			<p>Salones S & M - Direccion: Belgrano 1700 - Telefono:3834123456</p>  
+		</footer>
+    </div>
 
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
