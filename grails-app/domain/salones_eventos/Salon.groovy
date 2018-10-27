@@ -1,23 +1,24 @@
 package salones_eventos
 
-class Salon {
-    //int idSalon la base ya me crea un id sola
+class Salon {    
     String nombre   
     Propietario propietario
     String dirección
-    //Float[] ubicación_geográfica  
+    //Float[] ubicación_geográfica
     String telefono
-    String tipoSalon /*Fiestas conmemorativas, Eventos negocios, Eventos Artísticos, etc */
-    int capacidadSalon
+    String tipoSalon /*para fiestas, para negocios*/
+    int capacidad
     float precio
 
     static hasMany = [reserva: Reserva]
+    static belongsTo = [propietario: Propietario]
 
-    static constraints = {
-        propietario(blnak: false)
+    static constraints = {        
         nombre(blank: false)
-        capacidadSalon(blank: false)
+        capacidad(blank: false, min: 0)
         dirección(blank: false)
         tipoSalon(blanl: false)
+        telefono(blank: false)
+        precio(blank: false, min: 0)
     }
 }

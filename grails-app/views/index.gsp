@@ -1,65 +1,81 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <!--<meta name="layout" content="main"/>-->
+    <meta charset="utf-8">
+    <title>Alquileres de salones MJyS</title>        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="D:\Cosas en Mega\Facultad\3ro\Programacion III (2017)\Laboratorio\estilos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <content tag="nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Environment: ${grails.util.Environment.current.name}</a></li>
-                <li><a href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
-                <li><a href="#">App version:
-                    <g:meta name="info.app.version"/></a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Grails version:
-                    <g:meta name="info.app.grailsVersion"/></a>
-                </li>
-                <li><a href="#">Groovy version: ${GroovySystem.getVersion()}</a></li>
-                <li><a href="#">JVM version: ${System.getProperty('java.version')}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artefacts <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Controllers: ${grailsApplication.controllerClasses.size()}</a></li>
-                <li><a href="#">Domains: ${grailsApplication.domainClasses.size()}</a></li>
-                <li><a href="#">Services: ${grailsApplication.serviceClasses.size()}</a></li>
-                <li><a href="#">Tag Libraries: ${grailsApplication.tagLibClasses.size()}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                    <li><a href="#">${plugin.name} - ${plugin.version}</a></li>
-                </g:each>
-            </ul>
-        </li>
-    </content>
-
-    <div class="svg" role="presentation">
-        <div class="grails-logo-container">
-            <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
+    <header>
+        <div class="container-fluid bg-2 text-center">
+            <h1>Alquileres de salones MJyS</h1>
         </div>
-    </div>
+    </header>
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <!--Lo que esta dentro de este div es para que salga el cuadrdito desplegable cuando lo usamos en celular-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Laboratorio-Inicio.html">Inicio</a>
+            </div>
 
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">					
+                    <li><a href="Laboratorio-Galeria.html">Galeria</a></li>
+                    <li><a href="Laboratorio-Reservar.html">Reservar</a></li>						
+                    <li><a href="Laboratorio-VerReserva.html">Ver/Eliminar Reservas</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">					
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Iniciar Sesion</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">											
+                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required>
+                                                <div class="help-block text-right"><a href="">Olvidaste tu Contraseña?</a></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">Recordarme
+                                                </label>
+                                            </div>
+                                            <br/><br>
+                                            Eres Nuevo? <a href="Laboratorio-Registrame.html"><b>Registrarme</b></a>
+                                        </form>
+                                    </div>									
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Acá están los controladores-->
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Grails</h1>
-
-            <p>
-                Congratulations, you have successfully started your first Grails application! At the moment
-                this is the default page, feel free to modify it to either redirect to a controller or display
-                whatever content you may choose. Below is a list of controllers that are currently deployed in
-                this application, click on each to execute its default action:
-            </p>
-
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <ul>
@@ -72,6 +88,5 @@
             </div>
         </section>
     </div>
-
 </body>
 </html>
