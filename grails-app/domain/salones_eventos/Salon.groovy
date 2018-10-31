@@ -7,7 +7,8 @@ class Salon {
     String dirección
     //Float[] ubicación_geográfica  
     String telefono
-    String tipoSalon /*Fiestas conmemorativas, Eventos negocios, Eventos Artísticos, etc */
+    /*Fiestas conmemorativas, Eventos negocios, Eventos Artísticos, etc */
+    String tipoSalon     
     int capacidadSalon
     float precio
 

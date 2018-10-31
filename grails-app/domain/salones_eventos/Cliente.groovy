@@ -6,7 +6,6 @@ class Cliente {
     User usuario
    
     static hasMany = [reservas : Reserva]
-   
 
     static constraints = {
         //usuario unique:true
