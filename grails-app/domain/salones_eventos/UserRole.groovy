@@ -1,12 +1,11 @@
 package salones_eventos
 
 import grails.gorm.DetachedCriteria
-import groovy.transform.ToString
+import groovy.transform.ToString 
 
 import org.codehaus.groovy.util.HashCodeHelper
 import grails.compiler.GrailsCompileStatic
 
-@GrailsCompileStatic
 @ToString(cache=true, includeNames=true, includePackage=false)
 class UserRole implements Serializable {
 

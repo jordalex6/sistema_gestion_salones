@@ -21,16 +21,14 @@
     <header>  
         <div class="jumbotron jumbotron-fluid">            
             <h1 class="display-1">Alquileres JMyS</h1>
-            <p class="lead">Somos una pagina dedicada al alquieler de salones para eventos.</p>        
+            <p class="lead">Somos una pagina dedicada al alquiler de salones para eventos.</p>        
         </div> 
         <nav class="navbar navbar-default navbar-inverse" role="navigation">
-            <div class="container-fluid">
+            <div class="container">
                 <!--Lo que esta dentro de este div es para que salga el cuadrdito desplegable cuando lo usamos en celular-->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>            
                 </div>
@@ -53,6 +51,16 @@
                                     <g:link controller="tipoPractica" action="index">Tipos de Practicas</g:link>                                
                                 </li> --%>
                             </ul>
+                            <g:if test="${session!=null && session.Username!=null}">
+                                <div class="nav" role="navigation">
+                                    <ul>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Usuario: ${session.Username}</a></li>
+                                    <li><g:link controller="login" action="logout" controller="login"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesion</g:link></li>
+                                    </ul>
+                                </div>
+                            </g:if>
+
+                            <sec:ifNotLoggedIn> <%-- etiqueta spring secure: Muestra el contenido del cuerpo interno si el usuario no está autenticado. --%>
                             <!--boton de inicia sesion-->
                             <ul class="nav navbar-nav navbar-right">					
                                 <li class="dropdown">
@@ -60,38 +68,70 @@
                                     <ul id="login-dp" class="dropdown-menu">
                                         <li>
                                             <div class="row">
-                                                <div class="col-md-12">											
-                                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                <div class="col-md-12">
+                                                    <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="form" autocomplete="off">
                                                         <div class="form-group">
-                                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email" required>
+                                                            <p>
+                                                                <label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
+                                                                <input type="text" class="text_ form-contro" name="${usernameParameter ?: 'username'}" id="username" required/>
+                                                            </p>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required>
-                                                            <div class="help-block text-right"><a href="">Olvidaste tu Contraseña?</a></div>
+                                                            <p>
+                                                                <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
+                                                                <input type="password" class="text_ form-contro" name="${passwordParameter ?: 'password'}" id="password" required/>
+                                                            </p>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+                                                            <p>
+                                                                <input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
+                                                            </p>
                                                         </div>
                                                         <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox">Recordarme
-                                                            </label>
-                                                        </div>
-                                                        <br/><br>
-                                                        <!--Eres Nuevo? <a href="Laboratorio-Registrame.html"><b>Registrarme</b></a>-->
-                                                        <div class="bottom text-center" style="color: red;">
-                                                            Nuevo aquí? 
-                                                            <g:link controller="contacto" action="showRegistro">Registrate AQUI</g:link></a>
-                                                        </div>
+                                                            <p id="remember_me_holder">
+                                                                <input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
+                                                                <label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
+                                                            </p>
+                                                        </div>  
                                                     </form>
+                                                    <br/><br>
+                                                    <!--Eres Nuevo? <a href="Laboratorio-Registrame.html"><b>Registrarme</b></a>-->
+                                                    <div class="bottom text-center" style="color: red;">
+                                                        Nuevo aquí? 
+                                                        <g:link controller="contacto" action="showRegistro">Registrate AQUI</g:link></a>
+                                                    </div>   
                                                 </div>									
                                             </div>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
+                           </sec:ifNotLoggedIn>
+                           <sec:ifLoggedIn> <%-- etiqueta spring secure: Muestra el contenido del cuerpo interno si el usuario está autenticado. --%>
+                           <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary"> <b>Bienvenido <sec:username/></b></button>
+                                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Mi Perfil</a>
+                                            <a class="dropdown-item" href="#">Salir</a>
+                                    </div>
+                                </div>
+                            </li>	
+                               <%--<li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Bienvenido <sec:username/></b>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Mi Perfil</a>
+                                        <a class="dropdown-item" href="#">Salir</a>
+                                    </div>
+                                </li>			 --%>		
+                            </ul> 
+                           </sec:ifLoggedIn>		
                         </div>
                     </section>
                 </div>
