@@ -2,13 +2,14 @@ package salones_eventos
 
 class Salon {    
     String nombre   
-    Propietario propietario
-    String dirección
+    String direccion
     //Float[] ubicación_geográfica
     String telefono
-    String tipoSalon /*para fiestas, para negocios*/
-    int capacidad
-    float precio
+    String tipoSalon
+    Integer capacidad
+    Float precio
+    Propietario propietario
+    byte[] imagen
 
     static hasMany = [reserva: Reserva]
     static belongsTo = [propietario: Propietario]
@@ -16,9 +17,10 @@ class Salon {
     static constraints = {        
         nombre(blank: false)
         capacidad(blank: false, min: 0)
-        dirección(blank: false)
-        tipoSalon(blanl: false)
+        direccion(blank: false)
+        tipoSalon(blanl: false, inList:['normal','vip'])
         telefono(blank: false)
-        precio(blank: false, min: 0)
+        precio(blank: false)
+        imagen(nullable: true)
     }
 }

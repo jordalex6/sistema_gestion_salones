@@ -38,18 +38,22 @@
                         <div id="controllers" role="navigation"> 
                             <!--acá estan los links a los controladores-->                       
                             <ul class="nav navbar-nav">
+                                <!--acá tengo que hacer que vaya al inicio, vaya  saber como-->
+                                <li class="nav-item active">
+                                    <g:link view="index">Inicio</g:link>                            
+                                </li>
                                 <li class="nav-item active">
                                     <g:link controller="salon" action="index">Salones</g:link>                            
                                 </li>
-                                <%-- <li class="nav-item">
-                                    <g:link controller="consulta" action="index">Consulta</g:link>                                
+                                <%--<li class="nav-item">
+                                    <g:link controller="reserva" action="index">Mis Reservas</g:link>                                
                                 </li>
                                 <li class="nav-item active">
                                     <g:link controller="practica" action="index">Practicas Realizadas</g:link>                                
                                 </li>
                                 <li class="nav-item">
                                     <g:link controller="tipoPractica" action="index">Tipos de Practicas</g:link>                                
-                                </li> --%>
+                                </li>--%>
                             </ul>
                             <g:if test="${session!=null && session.Username!=null}">
                                 <div class="nav" role="navigation">
@@ -151,3 +155,46 @@
     <asset:javascript src="application.js"/>
 </body>
 </html>
+
+<%-- <!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>
+        <g:layoutTitle default="Grails"/>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:stylesheet src="application.css"/>
+    <g:layoutHead/>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/#">
+		    <asset:image src="grails.svg" alt="Grails Logo"/>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <g:pageProperty name="page.nav" />
+                </ul>
+            </div>
+        </div>
+    </div>
+    <g:layoutBody/>
+    <div class="footer" role="contentinfo"></div>
+    <div id="spinner" class="spinner" style="display:none;">
+        <g:message code="spinner.alt" default="Loading&hellip;"/>
+    </div>
+    <asset:javascript src="application.js"/>
+</body>
+</html> --%>
