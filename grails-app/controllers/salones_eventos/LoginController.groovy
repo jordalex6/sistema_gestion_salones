@@ -1,4 +1,4 @@
-package grails.plugin.springsecurity
+package salones_eventos
 
 import grails.converters.JSON
 import org.springframework.context.MessageSource
