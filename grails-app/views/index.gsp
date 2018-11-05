@@ -7,60 +7,120 @@
 </head>
 <body>
     <!--acá está el filtro de los salones-->
-    <g:form controller="salon" action="filtrarSalon" method="">
-        <label for="precio">Precio</label>
-        <select name="precio">
-            <option value="1">0 - 1000</option>
-            <option value="2">1000 - 5000</option>
-            <option value="3">5000 - 10000</option>
-            <option value="4">10000 - 15000</option>
-        </select>
-        <label for="capacidad">Capacidad</label>
-        <select name="capacidad">
-            <option value="1">0 - 50</option>
-            <option value="2">50 - 100</option>
-            <option value="3">150 - 200</option>
-            <option value="4">200 - 300</option>
-        </select>
-        <label for="tipo">Tipo</label>
-        <select name="tipo">
-            <option value="1">Normal</option>
-            <option value="2">Vip</option>
-        </select>
-        <label for="nombre">Nombre</label>
-        <g:textField name="nombre"/>
-        <br>
-        <input type="submit"/>
-        <input type="reset"/>
-    </g:form>
-    <!--aca van todos los salones o los filtrados-->
-    <%-- Con este codigo se hace para listar los salones, pero esa lista se hace en la vista index de salon y yo 
-    acá la estoy intentando hacer en la vista index fuera de salon, creo que por eso no funciona --%>        
-    <h1>Lista de Salones</h1>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Tipo de Salon</th>
-            <th>Capacidad</th>
-            <th>Precio</th>
-            <th>Propietario</th>
-            <th>Imagenes</th>
-        </tr>
-        <g:each in="${index?}"> <!--preguntar a la profe-->
-            <tr>
-                <td>${it.nombre}</td>
-                <td>${it.direccion}</td>
-                <td>${it.telefono}</td>
-                <td>${it.tipoSalon}</td>
-                <td>${it.capacidad}</td>
-                <td>${it.precio}</td>
-                <td>${it.propietario}</td>
-                <td>${it.imagen}</td>
-            </tr>
-        </g:each>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3" style="border-style: dotted;">
+                <g:form controller="salon" action="filtrarSalon" method="">
+                    <label for="precio">Precio</label>
+                    <select name="precio">
+                        <option value="1">0 - 1000</option>
+                        <option value="2">1000 - 5000</option>
+                        <option value="3">5000 - 10000</option>
+                        <option value="4">10000 - 15000</option>
+                    </select><br>
+                    <label for="capacidad">Capacidad</label>
+                    <select name="capacidad">
+                        <option value="1">0 - 50</option>
+                        <option value="2">50 - 100</option>
+                        <option value="3">150 - 200</option>
+                        <option value="4">200 - 300</option>
+                    </select><br>
+                    <label for="tipo">Tipo</label>
+                    <select name="tipo">
+                        <option value="1">Normal</option>
+                        <option value="2">Vip</option>
+                    </select><br>
+                    <label for="nombre">Nombre Salon</label>
+                    <g:textField name="nombre"/>
+                    <br>
+                    <input type="submit"/>
+                    <input type="reset"/>
+                </g:form>
+            </div>
+            <div class="col-md-9" style="border-style: dotted;">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+
 </body>
 </html>
 
