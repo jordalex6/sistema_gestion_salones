@@ -3,7 +3,6 @@ package salones_eventos
 class Salon {    
     String nombre   
     String direccion
-    //Float[] ubicación_geográfica
     String telefono
     String tipoSalon
     Integer capacidad
