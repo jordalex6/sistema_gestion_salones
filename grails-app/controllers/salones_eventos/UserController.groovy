@@ -18,15 +18,26 @@ class UserController {
         respond userService.list(params), model:[userCount: userService.count()]
     }
 
-    def show(Long id) {
-        def User user = userService.get(id)
-        println("ROLE = " + user.getAuthorities())
-        println("USER = " + user)
-        if(user.getAuthorities().any{it.authority =='"ROLE_ADMIN"'}){
-            respond user, view:'show_admin' 
-        }else if(user.getAuthorities().any{it.authority=='"ROLE_CLIENT"'}){
-             respond user, view:'show' 
+    def show() {
+        def userId = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener ID user logueado
+            null
+
+        if(user!=null){
+            def User user = userService.get(userId)
+            
+            def auth = springSecurityService.authentication // Para obtener info autentificacion de user Logueado
+            def authorities = auth.authorities // a Collection of GrantedAuthority (Roles)
+
+            if(authorities.any{it == 'ROLE_ADMIN'}){
+                println("authorities = " + authorities)
+                respond user, view:'show_admin'
+            }else{
+                println("authorities = " + authorities)
+                respond user, view:'show'
+            }
         }
+        
     }
     @Secured('ROLE_CLIENT')
     def showAdmin(Long id)
