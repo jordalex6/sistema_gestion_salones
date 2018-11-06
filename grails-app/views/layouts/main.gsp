@@ -38,13 +38,6 @@
                         <li class="nav-item">
                             <g:link class="nav-link" controller="reserva" action="index">Mis Reservas</g:link>                                
                         </li>
-                        <%--
-                        <li class="nav-item active">
-                            <g:link controller="practica" action="index">Practicas Realizadas</g:link>                                
-                        </li>
-                        <li class="nav-item">
-                            <g:link controller="tipoPractica" action="index">Tipos de Practicas</g:link>                                
-                        </li>--%>
                     </ul>
                <%--      <g:if test="${session!=null && session.Username!=null}">
                         <div class="nav" role="navigation">

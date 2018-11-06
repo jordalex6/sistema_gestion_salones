@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="mainSalon" />
+        <meta name="layout" content="user_account" />
     </head>
     <body>
         <div id="edit-salon" class="content scaffold-edit" role="main">

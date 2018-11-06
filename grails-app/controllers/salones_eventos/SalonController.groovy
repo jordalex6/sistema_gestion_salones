@@ -2,25 +2,27 @@ package salones_eventos
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
 class SalonController {
 
     SalonService salonService
-    ServicioSalonService servicioSalonService 
+    MiServiceSalonService miServiceSalonService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond salonService.list(params), model:[salonCount: salonService.count()]
-    }
-    //esto no funciona
-    def listadoSalonesPorPropietario(Propietario propietario) {
-      [listado: servicioSalonService.listadoSalonesPorPropietario(propietario)]
+        respond miServiceSalonService.list(params), model:[salonCount: miServiceSalonService.count()]
     }
 
+    // def index(User usuario) {        
+    //     respond miServiceSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miServiceSalonService.count()]
+    // }
+
     def show(Long id) {
-        respond salonService.get(id)
+        respond miServiceSalonService.get(id)
     }
 
     def create() {
@@ -34,7 +36,7 @@ class SalonController {
         }
 
         try {
-            salonService.save(salon)
+            miServiceSalonService.save(salon)
         } catch (ValidationException e) {
             respond salon.errors, view:'create'
             return
@@ -50,7 +52,7 @@ class SalonController {
     }
 
     def edit(Long id) {
-        respond salonService.get(id)
+        respond miServiceSalonService.get(id)
     }
 
     def update(Salon salon) {
@@ -60,7 +62,7 @@ class SalonController {
         }
 
         try {
-            salonService.save(salon)
+            miServiceSalonService.save(salon)
         } catch (ValidationException e) {
             respond salon.errors, view:'edit'
             return
@@ -81,7 +83,7 @@ class SalonController {
             return
         }
 
-        salonService.delete(id)
+        miServiceSalonService.delete(id)
 
         request.withFormat {
             form multipartForm {

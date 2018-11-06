@@ -4,7 +4,7 @@
     <meta name="layout" content="mainSalon"/>    
 </head>
 <body>
-    <g:form controller="salon" action="create" method="POST">
+    <g:form controller="salon" action="save" resource="${this.salon}" method="POST">
         <label for="nombre">Nombre</label>
         <g:textField name="nombre"/>
         <label for="direccion">Direccion</label>
@@ -24,8 +24,7 @@
         <!--falta ver como cargo la imagen-->
         <br><br>
         <!--este boton no funciona-->
-        <g:submitButton name="create" value="Crear"/>
-        <input type="submit"/>
+        <g:submitButton name="create" value="${message(code: 'default.button.create.label', default: 'Create')}" />
         <input type="reset"/>
     </g:form>
 </body>

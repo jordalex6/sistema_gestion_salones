@@ -4,7 +4,6 @@ class Propietario {
     String nombre
     User usuario
     String dni
-    CuentaBancaria cuentaBancaria
 
     static hasMany = [salones : Salon]
 
