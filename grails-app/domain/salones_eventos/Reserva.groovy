@@ -8,7 +8,7 @@ class Reserva {
     Date fecha_reserva
     BigDecimal precio
     boolean cancelada
-     static belongsTo= [cliente: Cliente,salon:Salon]
+    static belongsTo= [cliente: Cliente,salon:Salon]
 
     static constraints = {
         fecha_actual (blank:false)
@@ -23,6 +23,4 @@ class Reserva {
             }
         })
     }
-
 }
-

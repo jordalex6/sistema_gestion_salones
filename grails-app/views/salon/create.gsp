@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
+<html>
+<head>
+    <meta name="layout" content="mainSalon"/>    
+</head>
+<body>
+    <g:form controller="salon" action="create" method="POST">
+        <label for="nombre">Nombre</label>
+        <g:textField name="nombre"/>
+        <label for="direccion">Direccion</label>
+        <g:textField name="direccion"/>
+        <label for="telefono">Telefono</label>
+        <g:textField name="telefono"/>
+        <label for="tipoSalon">Tipo</label>
+        <select name="tipoSalon">
+            <option value="1">normal</option>
+            <option value="2">vip</option>
+        </select>
+        <br><br>
+        <label for="capacidad">Capacidad</label>
+        <g:field type="number" name="capacidad" min="0" required="true"/>
+        <label for="precio">Precio</label>
+        <g:field type="number" name="precio" min="0" required="true"/>
+        <!--falta ver como cargo la imagen-->
+        <br><br>
+        <!--este boton no funciona-->
+        <g:submitButton name="create" value="Crear"/>
+        <input type="submit"/>
+        <input type="reset"/>
+    </g:form>
+</body>
+</html>
+
+<%-- <!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="main" />
@@ -35,4 +68,4 @@
             </g:form>
         </div>
     </body>
-</html>
+</html> --%>

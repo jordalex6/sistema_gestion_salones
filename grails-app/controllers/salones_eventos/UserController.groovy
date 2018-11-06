@@ -4,13 +4,15 @@ import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_CLIENT','ROLE_ADMIN'])
+@Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
 class UserController {
  
     UserService userService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured('ROLE_ADMIN')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond userService.list(params), model:[userCount: userService.count()]
@@ -32,7 +34,7 @@ class UserController {
 
         respond userService.get(id)
     }
-
+    @Secured('ROLE_ADMIN')
     def create() {
         respond new User(params)
     }
@@ -60,7 +62,16 @@ class UserController {
     }
 
     def edit(Long id) {
-        respond userService.get(id)
+        def auth = springSecurityService.authentication
+        def authorities = auth.authorities // a Collection of GrantedAuthority
+
+        if(authorities.any{it == 'ROLE_ADMIN'}){
+            println("authorities = " + authorities)
+            respond userService.get(id), view:'edit_admin'
+        }else{
+            println("authorities = " + authorities)
+            respond userService.get(id), view:'edit'
+        }
     }
 
     def update(User user) {
@@ -70,6 +81,7 @@ class UserController {
         }
 
         try {
+            println("update user -> " + user)
             userService.save(user)
         } catch (ValidationException e) {
             respond user.errors, view:'edit'

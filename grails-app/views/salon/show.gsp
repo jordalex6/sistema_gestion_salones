@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="mainSalon" />
+    </head>
+    <body>
+        <div id="show-salon" class="content scaffold-show" role="main">
+            <h1>Datos del Salon</h1>
+            <f:display bean="salon"/> <!--está linea me muestra los datos del salon, vaya a saber dios como funciona-->
+            <g:form resource="${this.salon}" method="DELETE">
+                <fieldset class="buttons">
+                    <g:link action="edit" resource="${this.salon}">Editar</g:link>
+                    <input type="submit" value="${message(code: 'Eliminar')}" onclick="return confirm('${message(code: 'Está Seguro?')}');"/>
+                </fieldset>
+            </g:form>
+        </div>
+    </body>
+</html>
+
+<%-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta name="layout" content="mainSalon" />
         <g:set var="entityName" value="${message(code: 'salon.label', default: 'Salon')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
@@ -28,4 +47,4 @@
             </g:form>
         </div>
     </body>
-</html>
+</html> --%>
