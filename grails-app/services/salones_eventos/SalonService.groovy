@@ -1,8 +1,5 @@
 package salones_eventos
 
-import grails.gorm.services.Service
-
-@Service(Salon)
 interface SalonService {
 
     Salon get(Serializable id)
@@ -15,6 +12,5 @@ interface SalonService {
 
     Salon save(Salon salon)
 
-    List listadoSalonesPorPropietario(Propietario prop)
-
+    List listarSalonesPorUsuario(User usuario)
 }
