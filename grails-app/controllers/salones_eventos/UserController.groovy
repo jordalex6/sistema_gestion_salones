@@ -4,7 +4,7 @@ import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured('ROLE_CLIENT')
+@Secured(['ROLE_CLIENT','ROLE_ADMIN'])
 class UserController {
  
     UserService userService
@@ -17,6 +17,19 @@ class UserController {
     }
 
     def show(Long id) {
+        def User user = userService.get(id)
+        println("ROLE = " + user.getAuthorities())
+        println("USER = " + user)
+        if(user.getAuthorities().any{it.authority =='"ROLE_ADMIN"'}){
+            respond user, view:'show_admin' 
+        }else if(user.getAuthorities().any{it.authority=='"ROLE_CLIENT"'}){
+             respond user, view:'show' 
+        }
+    }
+    @Secured('ROLE_CLIENT')
+    def showAdmin(Long id)
+    {
+
         respond userService.get(id)
     }
 
