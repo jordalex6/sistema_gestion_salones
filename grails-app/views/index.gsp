@@ -9,7 +9,7 @@
     <!--acá está el filtro de los salones-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3" style="border-style: dotted;">
+            <div class="col-md-3">
                 <g:form controller="salon" action="filtrarSalon" method="">
                     <label for="precio">Precio</label>
                     <select name="precio">
@@ -37,7 +37,7 @@
                     <input type="reset"/>
                 </g:form>
             </div>
-            <div class="col-md-9" style="border-style: dotted;">
+            <div class="col-md-9">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="card">

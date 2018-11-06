@@ -16,20 +16,25 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="row">
                          <div class="col">
-                              <g:link class="dropdown-item" controller="user" action="create">Mi Cuenta</g:link>
+                            <h4>Mis Datos</h4>
+                            <g:link class="dropdown-item" controller="user" action="create">Datos Usuario</g:link>
                          </div>
                           <div class="col">
-                              <g:link class="dropdown-item" controller="user" action="create">Mi Cuenta</g:link>
+                            <h4>Reservas</h4>
+                            <g:link class="dropdown-item" controller="user" action="create">Mis Reservas</g:link>
+                            <g:link class="dropdown-item" controller="user" action="create">Reservas Canceladas</g:link>
                          </div>
                           <div class="col">
-                              <g:link class="dropdown-item" controller="user" action="create">Mi Cuenta</g:link>
+                            <h4>Salon Evento</h4>
+                            <g:link class="dropdown-item" controller="user" action="create">Publicar Salon</g:link>
+                            <g:link class="dropdown-item" controller="user" action="create">Mis Salones</g:link>
                          </div>
                     </div>
                 </div>
-                <div class="col-10">
+                <div class="col-9">
                 <g:layoutBody/>
                 </div>
             </div>
