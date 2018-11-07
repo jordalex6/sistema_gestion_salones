@@ -4,18 +4,44 @@
         <meta name="layout" content="user_account" />
     </head>
     <body>
-        <div id="edit-salon" class="content scaffold-edit" role="main">
-            <h1>Editar Salon</h1>
-            <g:form resource="${this.salon}" method="PUT">
-                <g:hiddenField name="version" value="${this.salon?.version}" />
-                <fieldset class="form">
-                    <f:all bean="salon"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                </fieldset>
-            </g:form>
-        </div>
+        <a href="#edit-salon" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <h1>Editar Mi Salón</h1>
+        <g:form resource="${this.salon}" method="PUT">
+            <g:hiddenField name="version" value="${this.user?.version}" />
+            <div class="form-group row mt-2">
+                <label for="nombre" class="col-sm-4 col-form-label">Nombre:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="nombre" disable value="${this.salon.nombre}">
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label for="direccion" class="col-sm-4 col-form-label">Dirección:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="direccion" value="${this.salon.direccion}">
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label for="telefono" class="col-sm-4 col-form-label">Telefono:</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="telefono" value="${this.salon.telefono}">
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label for="capacidad" class="col-sm-4 col-form-label">Capacidad:</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" name="capacidad"value="${this.salon.capacidad}">
+                </div>
+            </div>
+            <div class="form-group row mt-2">
+                <label for="precio" class="col-sm-4 col-form-label">Precio:</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" name="precio" value="${this.salon.precio}">
+                </div>
+            </div>
+            <fieldset class="buttons mt-3">
+                <input type="submit" value="Actualizar" />
+            </fieldset>
+        </g:form>
     </body>
 </html>
 

@@ -4,16 +4,62 @@
         <meta name="layout" content="mainSalon" />
     </head>
     <body>
-        <div id="show-salon" class="content scaffold-show" role="main">
-            <h1>Datos del Salon</h1>
-            <f:display bean="salon"/> <!--está linea me muestra los datos del salon, vaya a saber dios como funciona-->
-            <g:form resource="${this.salon}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link action="edit" resource="${this.salon}">Editar</g:link>
-                    <input type="submit" value="${message(code: 'Eliminar')}" onclick="return confirm('${message(code: 'Está Seguro?')}');"/>
-                </fieldset>
-            </g:form>
-        </div>
+        <g:form resource="${this.salon}" method="DELETE">
+            <a href="#show-salon" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+            <h1>Mi Salon</h1>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Nombre:</label>
+                <div class="col-sm-7">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${this.salon.nombre}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-4 col-form-label">Dirección:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticName" value="${this.salon.direccion}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticLastName" class="col-sm-4 col-form-label">Telefono:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticLastName" value="${this.salon.telefono}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticBirthday" class="col-sm-4 col-form-label">Tipo de Salón:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticBirthday" value="${this.salon.tipoSalon}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticPhome" class="col-sm-4 col-form-label">Capacidad:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.capacidad}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticPhome" class="col-sm-4 col-form-label">Precio:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
+                </div>
+            </div>
+            <!--esto todavia no funciona-->
+            <%-- <div class="form-group row">
+                <label for="staticPhome" class="col-sm-4 col-form-label">Imagenes:</label>
+                <div class="col-sm-7">
+                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
+                </div>
+            </div> --%>
+
+            <g:if test="${flash.message}">
+                <div class="message" role="status">${flash.message}</div>
+            </g:if>
+
+            <fieldset class="buttons">
+                <g:link action="edit" resource="${this.salon}">Editar</g:link>                
+                <input type="submit" value="Eliminar" onclick="return confirm('${message(code: 'Está seguro?')}');" />
+            </fieldset>
+        </g:form>
     </body>
 </html>
 

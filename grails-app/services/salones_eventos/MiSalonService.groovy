@@ -5,7 +5,7 @@ import grails.gorm.services.Service
 
 @Service(Salon)
 @Transactional
-abstract class MiServiceSalonService implements SalonService{
+abstract class MiSalonService implements SalonService{
 
     def serviceMethod() {
 

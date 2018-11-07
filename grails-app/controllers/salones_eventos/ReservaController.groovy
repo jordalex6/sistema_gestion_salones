@@ -6,8 +6,28 @@ import static org.springframework.http.HttpStatus.*
 class ReservaController {
 
     ReservaService reservaService
+SzService szService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+   
+    def mostrarSalon(Salon id) {
+
+      [mostrarSalon: szService.reservas(id)]
+      
+      
+    }
+    def reservarSalon(Salon id ) {
+
+        def salon =id
+        
+        def reserva = new Reserva(params)
+        reserva.salon = salon 
+        
+        java.util.Date fechaActual = new java.util.Date();
+        reserva.fecha_actual= fechaActual
+        respond reserva        
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
