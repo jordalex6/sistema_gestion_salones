@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="mainSalon"/>    
+    <meta name="layout" content="user_account"/>    
 </head>
 <body>
     <g:form controller="salon" action="save" resource="${this.salon}" method="POST">

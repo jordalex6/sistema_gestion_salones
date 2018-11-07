@@ -44,7 +44,7 @@
             </g:if>
     
             <fieldset class="buttons">
-                <g:link class="edit" action="edit" resource="${this.user}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                <g:link class="edit" action="edit"><g:message code="default.button.edit.label" default="Edit" /></g:link>
             </fieldset>
        
     </body>

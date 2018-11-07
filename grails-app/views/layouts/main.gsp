@@ -97,8 +97,8 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-log-in"></span><b>Bienvenido <sec:username/></b></a>
 				                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <g:link class="dropdown-item" controller="user" action="show" id="${sec.loggedInUserInfo(field:'id')}" >Mi Cuenta</g:link>
-                                <g:link class="dropdown-item" controller="logout" action="index/logoff"><span class="glyphicon glyphicon-log-in"></span>Cerrar Sesion</g:link>
+                                <g:link class="dropdown-item" controller="user" action="show">Mi Cuenta</g:link>
+                                <g:link class="dropdown-item" controller="logout" action="index"><span class="glyphicon glyphicon-log-in"></span>Cerrar Sesion</g:link>
                                 </div>
                             </li>	
                         </ul> 
