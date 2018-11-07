@@ -13,22 +13,22 @@ class SalonController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    // def index(Integer max) {
-    //     params.max = Math.min(max ?: 10, 100)
-    //     respond miSalonService.list(params), model:[salonCount: miSalonService.count()]
-    // }
-
-    def index() {
-        User user = springSecurityService.isLoggedIn() ?
-            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
-            null
-	    if(user!=null){
-    	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
-	    }else{
-		    println("Falla al obtener el usuario")
-	    }
-        //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond miSalonService.list(params), model:[salonCount: miSalonService.count()]
     }
+
+    // def index() {
+    //     User user = springSecurityService.isLoggedIn() ?
+    //         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+    //         null
+	//     if(user!=null){
+    // 	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
+	//     }else{
+	// 	    println("Falla al obtener el usuario")
+	//     }
+    //     //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
+    // }
 
     def show(Long id) {
         respond miSalonService.get(id)
@@ -45,6 +45,7 @@ class SalonController {
         }
 
         try {
+            //salon.imagen = params.imagen
             miSalonService.save(salon)
         } catch (ValidationException e) {
             respond salon.errors, view:'create'

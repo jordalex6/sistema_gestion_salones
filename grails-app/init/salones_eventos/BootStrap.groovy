@@ -40,7 +40,14 @@ class BootStrap {
             it.clear()
         }
 
-        def salon1 = new Salon(nombre:'Esmeralda', usuario:propUser, direccion:'Sumalao', telefono:'3834111111', capacidad:1000, precio:60000.0, tipoSalon:'vip')
+        def salon1 = new Salon(nombre:'Esmeralda', 
+                                usuario:propUser, 
+                                direccion:'Sumalao', 
+                                telefono:'3834111111', 
+                                capacidad:1000, 
+                                precio:60000.0, 
+                                tipoSalon:'vip',
+                                /* imagen:'images.jpg'*/)
         if(!salon1.save(flush:true)){
             salon1.errors.allErrors.each{println it}
         }else{
