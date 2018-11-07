@@ -8,21 +8,30 @@ import grails.plugin.springsecurity.annotation.Secured
 class SalonController {
 
     SalonService salonService
-    MiServiceSalonService miServiceSalonService
+    MiSalonService miSalonService
+    def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond miServiceSalonService.list(params), model:[salonCount: miServiceSalonService.count()]
-    }
-
-    // def index(User usuario) {        
-    //     respond miServiceSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miServiceSalonService.count()]
+    // def index(Integer max) {
+    //     params.max = Math.min(max ?: 10, 100)
+    //     respond miSalonService.list(params), model:[salonCount: miSalonService.count()]
     // }
 
+    def index() {
+        User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+	    if(user!=null){
+    	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
+	    }else{
+		    println("Falla al obtener el usuario")
+	    }
+        //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
+    }
+
     def show(Long id) {
-        respond miServiceSalonService.get(id)
+        respond miSalonService.get(id)
     }
 
     def create() {
@@ -36,7 +45,7 @@ class SalonController {
         }
 
         try {
-            miServiceSalonService.save(salon)
+            miSalonService.save(salon)
         } catch (ValidationException e) {
             respond salon.errors, view:'create'
             return
@@ -52,7 +61,23 @@ class SalonController {
     }
 
     def edit(Long id) {
-        respond miServiceSalonService.get(id)
+        //esto sirve para verificar el usuario cada vez que se cargue la pagina
+        // User user = springSecurityService.isLoggedIn() ?
+        //     springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+        //     null
+
+        // if(user != null){
+        //     def authorities =springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
+
+        //     if(authorities.any{it == 'ROLE_ADMIN'}){
+        //         println("edit authorities = " + authorities)
+        //         respond user, view:'edit_admin'
+        //     }else{
+        //         println("edit authorities = " + authorities)
+        //         respond user, view:'edit'
+        //     }
+        // }
+        respond miSalonService.get(id)
     }
 
     def update(Salon salon) {
@@ -62,7 +87,7 @@ class SalonController {
         }
 
         try {
-            miServiceSalonService.save(salon)
+            miSalonService.save(salon)
         } catch (ValidationException e) {
             respond salon.errors, view:'edit'
             return
@@ -83,7 +108,7 @@ class SalonController {
             return
         }
 
-        miServiceSalonService.delete(id)
+        miSalonService.delete(id)
 
         request.withFormat {
             form multipartForm {
