@@ -2,8 +2,7 @@ package salones_eventos
 
 class Reserva {
 
-    Cliente cliente
-    Salon salon
+    
     Date fecha_actual
     Date fecha_reserva
     BigDecimal precio
