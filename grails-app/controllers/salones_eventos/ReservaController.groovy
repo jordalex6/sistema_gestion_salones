@@ -17,13 +17,13 @@ SzService szService
       
       
     }
-    def reservarSalon(Salon id , Cliente hh) {
+    def reservarSalon(Salon id ) {
 
         def salon =id
-        def cliente= hh
+        
         def reserva = new Reserva(params)
         reserva.salon = salon 
-        reserva.cliente= cliente
+        
         java.util.Date fechaActual = new java.util.Date();
         reserva.fecha_actual= fechaActual
         respond reserva        
