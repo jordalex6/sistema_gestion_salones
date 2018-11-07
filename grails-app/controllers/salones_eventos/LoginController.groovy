@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.WebAttributes
 import org.springframework.security.web.authentication.session.SessionAuthenticationException
-
+import grails.plugin.springsecurity.SpringSecurityUtils
 import javax.servlet.http.HttpServletResponse
 
 @Secured('permitAll')
