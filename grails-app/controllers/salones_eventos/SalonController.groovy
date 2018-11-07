@@ -10,6 +10,8 @@ class SalonController {
     SalonService salonService
     MiServiceSalonService miServiceSalonService
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -22,11 +24,27 @@ class SalonController {
     // }
 
     def show(Long id) {
+        
         respond miServiceSalonService.get(id)
     }
 
     def create() {
-        respond new Salon(params)
+
+         User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.currentUser : // Para obtener Object user logueado
+            null
+        if(user != null){
+            List<String> userRoles = springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
+            println("is authorities PROPIETARIO -> " + userRoles.any{it.authority == 'ROLE_PROPIETARIO'})
+            if(userRoles.any{it.authority == 'ROLE_PROPIETARIO'}){
+                println("create salon userRoles = " + userRoles)
+                respond new Salon(params)
+            }else{
+                println("create Propietario userRoles = " + userRoles)
+                redirect(controller: 'propietario', action: 'create')
+            }
+        }
+       
     }
 
     def save(Salon salon) {
@@ -36,7 +54,14 @@ class SalonController {
         }
 
         try {
-            miServiceSalonService.save(salon)
+            User user = springSecurityService.isLoggedIn() ?
+                springSecurityService.currentUser : // Para obtener Object user logueado
+                null
+             if(user != null){
+                salon.setPropietario(user.getPropietario())
+                miServiceSalonService.save(salon)
+             }
+
         } catch (ValidationException e) {
             respond salon.errors, view:'create'
             return
