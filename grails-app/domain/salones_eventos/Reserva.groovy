@@ -2,7 +2,7 @@ package salones_eventos
 
 class Reserva {
 
-    
+
     Date fecha_actual
     Date fecha_reserva
     BigDecimal precio
@@ -21,5 +21,6 @@ class Reserva {
                 return ['Error']
             }
         })
+        fecha_reserva(unique:"salon")
     }
 }
