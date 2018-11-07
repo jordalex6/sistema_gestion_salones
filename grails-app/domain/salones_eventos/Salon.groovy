@@ -7,13 +7,10 @@ class Salon {
     String tipoSalon
     Integer capacidad
     Float precio
-    User usuario
-    //Propietario propietario
     byte[] imagen
 
     static hasMany = [reserva: Reserva]
-    //static belongsTo = [propietario: Propietario]
-    static belongsTo = [usuario: User]
+    static belongsTo = [propietario: Propietario]
 
     static constraints = {        
         nombre(blank: false)
@@ -23,7 +20,6 @@ class Salon {
         telefono(blank: false, matches:"[0-9]{10}")
         precio(blank: false)        
         imagen(nullable: true)
-        //propietario(nullable: false)
-        usuario(blank: false)
+        propietario(nullable: true)
     }
 }

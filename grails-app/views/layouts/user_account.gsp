@@ -29,7 +29,7 @@
                          </div>
                           <div class="col">
                             <h4>Salon Evento</h4>
-                            <g:link class="dropdown-item" controller="user" action="create">Publicar Salon</g:link>
+                            <g:link class="dropdown-item" controller="salon" action="create">Publicar Salon</g:link>
                             <g:link class="dropdown-item" controller="user" action="create">Mis Salones</g:link>
                          </div>
                     </div>

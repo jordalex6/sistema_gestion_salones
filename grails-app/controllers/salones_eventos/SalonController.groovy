@@ -7,15 +7,27 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
 class SalonController {
 
-    SalonService salonService
-    MiSalonService miSalonService
+    /* SalonService salonService */
+    def miSalonService
     def springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond miSalonService.list(params), model:[salonCount: miSalonService.count()]
+    // def index(Integer max) {
+    //     params.max = Math.min(max ?: 10, 100)
+    //     respond miSalonService.list(params), model:[salonCount: miSalonService.count()]
+    // }
+
+    def index() {
+        User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+	    if(user!=null){
+    	    respond miSalonService.listarSalonesPorPropietario(user.getPropietario()), model:[salonCount: miSalonService.count()]
+	    }else{
+		    println("Falla al obtener el usuario")
+	    }
+        //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
     }
 
     // def index() {
@@ -35,7 +47,22 @@ class SalonController {
     }
 
     def create() {
-        respond new Salon(params)
+
+         User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.currentUser : // Para obtener Object user logueado
+            null
+        if(user != null){
+            List<String> userRoles = springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
+            println("is authorities PROPIETARIO -> " + userRoles.any{it.authority == 'ROLE_PROPIETARIO'})
+            if(userRoles.any{it.authority == 'ROLE_PROPIETARIO'}){
+                println("create salon userRoles = " + userRoles)
+                respond new Salon(params)
+            }else{
+                println("create Propietario userRoles = " + userRoles)
+                redirect(controller: 'propietario', action: 'create')
+            }
+        }
+       
     }
 
     def save(Salon salon) {
@@ -45,8 +72,14 @@ class SalonController {
         }
 
         try {
-            //salon.imagen = params.imagen
-            miSalonService.save(salon)
+            User user = springSecurityService.isLoggedIn() ?
+                springSecurityService.currentUser : // Para obtener Object user logueado
+                null
+             if(user != null){
+                salon.setPropietario(user.getPropietario())
+                miSalonService.save(salon)
+             }
+
         } catch (ValidationException e) {
             respond salon.errors, view:'create'
             return

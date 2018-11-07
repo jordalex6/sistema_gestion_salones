@@ -2,6 +2,7 @@ package salones_eventos
 
 import org.springframework.security.access.annotation.Secured
 import org.springframework.security.web.RedirectStrategy
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 import javax.servlet.http.HttpServletResponse
 

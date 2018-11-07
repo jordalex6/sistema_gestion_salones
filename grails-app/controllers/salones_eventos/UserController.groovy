@@ -18,9 +18,24 @@ class UserController {
         respond userService.list(params), model:[userCount: userService.count()]
     }
 
-    def show(Long id) {
-        respond userService.get(id)
+    def show() {
+        User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+
+        if(user != null){
+            def authorities =springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
+            if(authorities.any{it.authority == 'ROLE_ADMIN'}){
+                println("show authorities = " + authorities)
+                respond user, view:'show_admin'
+            }else{
+                println("show authorities = " + authorities)
+                respond user, view:'show'
+            }
+        }
+        
     }
+
     @Secured('ROLE_ADMIN')
     def create() {
         respond new User(params)
@@ -48,16 +63,22 @@ class UserController {
         }
     }
 
-    def edit(Long id) {
-        def auth = springSecurityService.authentication
-        def authorities = auth.authorities // a Collection of GrantedAuthority
+    def edit() {
 
-        if(authorities.any{it == 'ROLE_ADMIN'}){
-            println("authorities = " + authorities)
-            respond userService.get(id), view:'edit_admin'
-        }else{
-            println("authorities = " + authorities)
-            respond userService.get(id), view:'edit'
+         User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+
+        if(user != null){
+            def authorities =springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
+
+            if(authorities.any{it.authority == 'ROLE_ADMIN'}){
+                println("edit authorities = " + authorities)
+                respond user, view:'edit_admin'
+            }else{
+                println("edit authorities = " + authorities)
+                respond user, view:'edit'
+            }
         }
     }
 
@@ -84,6 +105,7 @@ class UserController {
         }
     }
 
+    @Secured('ROLE_ADMIN')
     def delete(Long id) {
         if (id == null) {
             notFound()
