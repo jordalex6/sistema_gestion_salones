@@ -11,9 +11,8 @@ abstract class MiSalonService implements SalonService{
 
     }
 
-    List listarSalonesPorUsuario(User usuario){
-        def salones = Salon.findAllByUsuario(usuario)
-        return salones
+    List<Salon> listarSalonesPorPropietario(Propietario propietario){
+        return Salon.findAllByPropietario(propietario)
     }
 }
  

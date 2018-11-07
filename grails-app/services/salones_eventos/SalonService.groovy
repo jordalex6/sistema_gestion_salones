@@ -12,5 +12,5 @@ interface SalonService {
 
     Salon save(Salon salon)
 
-    List listarSalonesPorUsuario(User usuario)
+    List listarSalonesPorPropietario(Propietario propietario)
 }

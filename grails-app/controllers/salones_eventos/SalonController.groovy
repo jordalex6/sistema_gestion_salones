@@ -23,7 +23,7 @@ class SalonController {
             springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
             null
 	    if(user!=null){
-    	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
+    	    respond miSalonService.listarSalonesPorPropietario(user.getPropietario()), model:[salonCount: miSalonService.count()]
 	    }else{
 		    println("Falla al obtener el usuario")
 	    }
