@@ -8,6 +8,8 @@ class CuentaBancaria {
     String nombreTitular
     String dniTitular
 
+    static belongsTo = [propietario: Propietario]
+    
     static constraints = {
     }
 }

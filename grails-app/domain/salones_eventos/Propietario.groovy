@@ -1,15 +1,19 @@
 package salones_eventos
 
 class Propietario {
-    String nombre
-    User usuario
-    String dni
+    
+    // User usuario
+    String cuit
+    String razonSocial
+    CuentaBancaria cuentaBancaria 
 
     static hasMany = [salones : Salon]
+    static belongsTo = [usuario: User]
 
     static constraints = {
         //usuario unique:true
-        dni nullable:true, blank: true, matches:"[0-9]{8}"
+        cuit nullable:false, blank: false, matches:"[0-9]{11}"
+        razonSocial nullable:false, blank: false
         cuentaBancaria nullable: true
     }
-}
+} 
