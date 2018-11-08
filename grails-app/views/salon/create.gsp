@@ -4,35 +4,7 @@
     <meta name="layout" content="user_account"/>    
 </head>
 <body>
-    <%-- <g:form resource="${this.salon}" action="save" method="POST">
-        <fieldset class="form">
-            <label for="nombre">Nombre</label>
-            <g:textField name="nombre"/>
-            <label for="direccion">Direccion</label>
-            <g:textField name="direccion"/>
-            <label for="telefono">Telefono</label>
-            <g:textField name="telefono"/>
-            <label for="tipoSalon">Tipo</label>
-            <select name="tipoSalon">
-                <option value="1">normal</option>
-                <option value="2">vip</option>
-            </select>
-            <br><br>
-            <label for="capacidad">Capacidad</label>
-            <g:field type="number" name="capacidad" min="0" required="true"/>
-            <label for="precio">Precio</label>
-            <g:field type="number" name="precio" min="0" required="true"/>
-            <!--falta ver como cargo la imagen-->
-            <label for="imagen">Imagen del Salón</label>
-            <input type="file" name="imagen" />
-        </fieldset>
-        <!--este boton no funciona-->
-        <fieldset class="buttons">
-            <g:submitButton name="create" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-            <input type="reset"/>
-        </fieldset>
-    </g:form> --%>
-    <g:uploadForm action="save" resource="${this.salon}" method="POST">
+    <%-- <g:uploadForm action="save" resource="${this.salon}" method="POST">
         <fieldset class="form">
             <label for="nombre">Nombre</label>
             <g:textField name="nombre"/>
@@ -59,16 +31,16 @@
             <g:submitButton name="create" value="Crear"/>
             <input type="reset"/>
         </fieldset>
-    </g:uploadForm>
+    </g:uploadForm> --%>
     <!--esto funciona menos para la imagen-->
-    <%-- <g:form resource="${this.salon}" method="POST">
+    <g:uploadForm resource="${this.salon}" method="POST">
         <fieldset class="form">
-            <f:all bean="salon" except="reserva, usuario"/>
+            <f:all bean="salon" except="reserva, propietario"/>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" value="Crear" />
         </fieldset>
-    </g:form> --%>
+    </g:uploadForm>
 </body>
 </html>
 

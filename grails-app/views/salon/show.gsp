@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <html>
     <head>
-          <meta name="layout" content="user_account"/>
+        <meta name="layout" content="user_account"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
         <g:form resource="${this.salon}" method="DELETE">
@@ -16,40 +20,42 @@
             <div class="form-group row">
                 <label for="staticName" class="col-sm-4 col-form-label">Dirección:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticName" value="${this.salon.direccion}">
+                    <input type="text" readonly class="form-control-plaintext" id="staticName" value="${this.salon.direccion}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticLastName" class="col-sm-4 col-form-label">Telefono:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticLastName" value="${this.salon.telefono}">
+                    <input type="text" readonly class="form-control-plaintext" id="staticLastName" value="${this.salon.telefono}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticBirthday" class="col-sm-4 col-form-label">Tipo de Salón:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticBirthday" value="${this.salon.tipoSalon}">
+                    <input type="text" readonly class="form-control-plaintext" id="staticBirthday" value="${this.salon.tipoSalon}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticPhome" class="col-sm-4 col-form-label">Capacidad:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.capacidad}">
+                    <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.capacidad}">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticPhome" class="col-sm-4 col-form-label">Precio:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
+                    <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
                 </div>
             </div>
             <!--esto todavia no funciona-->
-            <%-- <div class="form-group row">
-                <label for="staticPhome" class="col-sm-4 col-form-label">Imagenes:</label>
+            <div class="form-group row">
+                <label for="staticPhome" class="col-sm-4 col-form-label">Imagen:</label>
                 <div class="col-sm-7">
-                <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
+                    <!--<input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.imagen}">-->
+                    <img src=${createLink(controller:"SalonController", action:"verImagen", id:"${params.id}")} width="500" /> 
+                    <img src="<g:createLink controller="SalonController" action="verImagen2" id="${params.id}"/> width="500"/>
                 </div>
-            </div> --%>
+            </div>
 
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>

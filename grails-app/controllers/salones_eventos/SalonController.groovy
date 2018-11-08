@@ -27,30 +27,41 @@ class SalonController {
 	    }else{
 		    println("Falla al obtener el usuario")
 	    }
-        //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
     }
-
-    // def index() {
-    //     User user = springSecurityService.isLoggedIn() ?
-    //         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
-    //         null
-	//     if(user!=null){
-    // 	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
-	//     }else{
-	// 	    println("Falla al obtener el usuario")
-	//     }
-    //     //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
-    // }
+    //metodos para las imagenes
+    def grabar(){
+        def file = request.getFile('imagen')
+        def salon = new Salon(imagen:file).save(flush:true)
+        salon.save(flush:true)
+        if (salon.hasErrors()) {
+            salon.errors.allErrors.each {
+                println it
+            }
+        }
+        redirect action:"show", params: [id: salon.id]
+    }
+    def verImagen = {
+        def salon = Salon.get(params.id)      
+        response.outputStream << salon.imagen
+        response.outputStream.flush()      
+    }
+    def verImagen2(Long id) {
+        Salon salon = miSalonService.get(id)
+        if (!salon || salon.imagen == null) {
+            notFound()
+            return
+        }
+        render file: salon.imagen, contentType="/jpeg"
+    }
 
     def show(Long id) {
         respond miSalonService.get(id)
     }
 
     def create() {
-
-         User user = springSecurityService.isLoggedIn() ?
-            springSecurityService.currentUser : // Para obtener Object user logueado
-            null
+        User user = springSecurityService.isLoggedIn() ?
+        springSecurityService.currentUser : // Para obtener Object user logueado
+        null
         if(user != null){
             List<String> userRoles = springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
             println("is authorities PROPIETARIO -> " + userRoles.any{it.authority == 'ROLE_PROPIETARIO'})
@@ -62,7 +73,6 @@ class SalonController {
                 redirect(controller: 'propietario', action: 'create')
             }
         }
-       
     }
 
     def save(Salon salon) {
@@ -73,14 +83,14 @@ class SalonController {
 
         try {
             User user = springSecurityService.isLoggedIn() ?
-                springSecurityService.currentUser : // Para obtener Object user logueado
+                springSecurityService.currentUser : // Para obtener el usuario logueado
                 null
-             if(user != null){
+            if(user != null){
                 salon.setPropietario(user.getPropietario())
                 miSalonService.save(salon)
-             }
+            }
 
-        } catch (ValidationException e) {
+        }catch (ValidationException e) {
             respond salon.errors, view:'create'
             return
         }

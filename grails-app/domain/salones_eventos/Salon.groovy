@@ -22,4 +22,8 @@ class Salon {
         imagen(nullable: true)
         propietario(nullable: true)
     }
+
+    static mapping = {
+        imagen column: 'featured_image_bytes', sqlType: 'bytea' 
+    }
 }
