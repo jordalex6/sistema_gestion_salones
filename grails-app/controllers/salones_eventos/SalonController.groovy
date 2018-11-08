@@ -30,6 +30,18 @@ class SalonController {
         //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
     }
 
+    // def index() {
+    //     User user = springSecurityService.isLoggedIn() ?
+    //         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+    //         null
+	//     if(user!=null){
+    // 	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
+	//     }else{
+	// 	    println("Falla al obtener el usuario")
+	//     }
+    //     //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
+    // }
+
     def show(Long id) {
         respond miSalonService.get(id)
     }

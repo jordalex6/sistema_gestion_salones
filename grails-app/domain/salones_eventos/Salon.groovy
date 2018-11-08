@@ -17,8 +17,8 @@ class Salon {
         capacidad(blank: false, min: 0)
         direccion(blank: false)
         tipoSalon(blanl: false, inList:['normal','vip'])
-        telefono(blank: false)
-        precio(blank: false)
+        telefono(blank: false, matches:"[0-9]{10}")
+        precio(blank: false)        
         imagen(nullable: true)
         propietario(nullable: true)
     }
