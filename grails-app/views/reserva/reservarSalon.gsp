@@ -10,7 +10,7 @@
   
             <g:form resource="${this.reserva}" method="POST">
                 <fieldset class="form">
-                    <f:all bean="reserva" except = "cliente,salon,fecha_actual"/>
+                    <f:all bean="reserva" except = "cliente,salon,fecha_actual,cancelada,precio"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

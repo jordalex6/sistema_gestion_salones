@@ -9,8 +9,18 @@ class SzService {
 
     }
     List reservas(Salon id){
-      def productos =  Reserva.findAllBySalon(id)
-      return productos
+      def reservas =  Reserva.findAllBySalon(id)
+      return reservas
    
+    }
+    List reservas(Cliente id){
+      def reservas =  Reserva.findAllByCliente(id)
+      return reservas
+   
+    }
+
+    void eliminarReserva(Long id) {
+      def reserva = Reserva.get(id)
+      reserva.delete(flush: true)
     }
 }
