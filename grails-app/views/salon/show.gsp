@@ -50,10 +50,8 @@
             <!--esto todavia no funciona-->
             <div class="form-group row">
                 <label for="staticPhome" class="col-sm-4 col-form-label">Imagen:</label>
-                <div class="col-sm-7">
-                    <!--<input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.imagen}">-->
-                    <img src=${createLink(controller:"SalonController", action:"verImagen", id:"${params.id}")} width="500" /> 
-                    <img src="<g:createLink controller="SalonController" action="verImagen2" id="${params.id}"/> width="500"/>
+                <div class="col-sm-7">            
+                    <img src=${createLink(controller:"salon", action:"verImagen", id:"${this.salon.id}")} width='300' />
                 </div>
             </div>
 

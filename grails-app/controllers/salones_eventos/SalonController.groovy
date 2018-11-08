@@ -28,30 +28,11 @@ class SalonController {
 		    println("Falla al obtener el usuario")
 	    }
     }
-    //metodos para las imagenes
-    def grabar(){
-        def file = request.getFile('imagen')
-        def salon = new Salon(imagen:file).save(flush:true)
-        salon.save(flush:true)
-        if (salon.hasErrors()) {
-            salon.errors.allErrors.each {
-                println it
-            }
-        }
-        redirect action:"show", params: [id: salon.id]
-    }
+        
     def verImagen = {
         def salon = Salon.get(params.id)      
         response.outputStream << salon.imagen
         response.outputStream.flush()      
-    }
-    def verImagen2(Long id) {
-        Salon salon = miSalonService.get(id)
-        if (!salon || salon.imagen == null) {
-            notFound()
-            return
-        }
-        render file: salon.imagen, contentType="/jpeg"
     }
 
     def show(Long id) {
