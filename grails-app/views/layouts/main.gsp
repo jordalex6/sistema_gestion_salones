@@ -9,11 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     <asset:stylesheet src="application.css"/>    
+    <asset:stylesheet src="estilos.css"/>    
 
     <g:layoutHead/>
 </head>
 <body>
-    <header>  
+    <header role="banner" class="nav-header nav-header-plus nav-header--is-leave">  
         <div class="jumbotron jumbotron-fluid no-margin-bottom">
             <div class="container text-xs-center">
                 <h1 class="display-3 m-t-1">James Barrett</h1>
@@ -23,7 +24,7 @@
                 <i class="fa fa-2x fa-chevron-down" aria-hidden="true"></i>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
             <div class="container-fluid">
                 <g:link class="navbar-brand" view="index">Inicio</g:link>    
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,12 +33,16 @@
                     <!--aca está el nav negro de arriba-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                       <%--  <li class="nav-item">
                             <g:link class="nav-link" controller="salon" action="index">Salones</g:link>                            
                         </li>
                         <li class="nav-item">
                             <g:link class="nav-link" controller="reserva" action="index">Mis Reservas</g:link>                                
-                        </li>
+                        </li> --%>
                     </ul>
                <%--      <g:if test="${session!=null && session.Username!=null}">
                         <div class="nav" role="navigation">

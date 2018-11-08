@@ -54,7 +54,8 @@ class BootStrap {
             it.clear()
          }
 
-         def salon1 = new Salon(nombre:'Esmeralda',
+         def salon1 = new Salon(nombre:'Esmeralda', 
+                                descripcion:'Un salon con amplios y variados espacios, se ofrecen servicios de calidad acorde a sus necesidades',
                                 direccion:'Sumalao', 
                                 telefono:'3834111111', 
                                 capacidad:1000, 
@@ -63,21 +64,22 @@ class BootStrap {
                                 propietario:
                                 clientUser.getPropietario())
 
-        def salon1 = new Salon(nombre:'Esmeralda', 
+       /*  def salon1 = new Salon(nombre:'Esmeralda', 
                                 usuario:propUser, 
                                 direccion:'Sumalao', 
                                 telefono:'3834111111', 
                                 capacidad:1000, 
                                 precio:60000.0, 
                                 tipoSalon:'vip',
-                                /* imagen:'images.jpg'*/)
+                                 imagen:'images.jpg') */
         if(!salon1.save(flush:true)){
             salon1.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
         }
         def salon2 = new Salon(nombre:'La Tanita',
-                                direccion:'Sumalao', 
+                                descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',
+                                direccion:'Valle Viejo - Tres puentes', 
                                 telefono:'3834111111', 
                                 capacidad:1000, 
                                 precio:60000.0, 
