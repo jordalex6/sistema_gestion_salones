@@ -13,20 +13,39 @@ SzService szService
    
     def mostrarSalon(Salon id) {
 
+
       [mostrarSalon: szService.reservas(id)]
       
       
     }
     def reservarSalon(Salon id ) {
+        User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+	    if(user!=null){
+    	    def salon =id
 
-        def salon =id
-        
         def reserva = new Reserva(params)
         reserva.salon = salon 
-        
+        reserva.precio=Bigdecimal (salon.precio)
+        reserva.cliente=user.getCliente()
         java.util.Date fechaActual = new java.util.Date();
         reserva.fecha_actual= fechaActual
-        respond reserva        
+        respond reserva      
+         
+	    }
+        
+    }
+    def mostrarReservaUsuario() {
+        User user = springSecurityService.isLoggedIn() ?
+        springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+        null
+      [listado: szService.reservaCliente(user.getCliente())]
+    }
+
+    def darBaja() {
+      stockService.eliminarReserva(new Long(params.id))
+      redirect(action:"mostrarReservaUsuario")
     }
 
     def index(Integer max) {

@@ -27,30 +27,22 @@ class SalonController {
 	    }else{
 		    println("Falla al obtener el usuario")
 	    }
-        //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
     }
-
-    // def index() {
-    //     User user = springSecurityService.isLoggedIn() ?
-    //         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
-    //         null
-	//     if(user!=null){
-    // 	    respond miSalonService.listarSalonesPorUsuario(user), model:[salonCount: miSalonService.count()]
-	//     }else{
-	// 	    println("Falla al obtener el usuario")
-	//     }
-    //     //respond miSalonService.listarSalonesPorUsuario(usuario), model:[salonCount: miSalonService.count()]
-    // }
+        
+    def verImagen = {
+        def salon = Salon.get(params.id)      
+        response.outputStream << salon.imagen
+        response.outputStream.flush()      
+    }
 
     def show(Long id) {
         respond miSalonService.get(id)
     }
 
     def create() {
-
-         User user = springSecurityService.isLoggedIn() ?
-            springSecurityService.currentUser : // Para obtener Object user logueado
-            null
+        User user = springSecurityService.isLoggedIn() ?
+        springSecurityService.currentUser : // Para obtener Object user logueado
+        null
         if(user != null){
             List<String> userRoles = springSecurityService.authentication.authorities // a Collection of GrantedAuthority (Roles)
             println("is authorities PROPIETARIO -> " + userRoles.any{it.authority == 'ROLE_PROPIETARIO'})
@@ -62,7 +54,6 @@ class SalonController {
                 redirect(controller: 'propietario', action: 'create')
             }
         }
-       
     }
 
     def save(Salon salon) {
@@ -73,14 +64,14 @@ class SalonController {
 
         try {
             User user = springSecurityService.isLoggedIn() ?
-                springSecurityService.currentUser : // Para obtener Object user logueado
+                springSecurityService.currentUser : // Para obtener el usuario logueado
                 null
-             if(user != null){
+            if(user != null){
                 salon.setPropietario(user.getPropietario())
                 miSalonService.save(salon)
-             }
+            }
 
-        } catch (ValidationException e) {
+        }catch (ValidationException e) {
             respond salon.errors, view:'create'
             return
         }

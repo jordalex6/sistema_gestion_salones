@@ -26,10 +26,10 @@ class BootStrap {
 
         UserRole.create clientUser, propRole
 
-         UserRole.withSession {
+        UserRole.withSession {
             it.flush()
             it.clear()
-         }
+        }
         /* User Propietario */
         def propUser = new User(username: 'sante@gmail.com', 
                                 password: 'password', 
@@ -38,18 +38,25 @@ class BootStrap {
                                 
         println("new user propietario-> " + propUser)
         UserRole.create propUser, clientRole
+        Propietario propietario2 = new Propietario(cuit:"27355016668", razonSocial:"La Tanita SRL")
+
+        propUser.setPropietario(propietario2)
+        propUser.save(flush:true)                      
+        println("update user client -> " + propUser)
+
+        UserRole.create propUser, propRole
         UserRole.withSession {
             it.flush()
             it.clear()
-         }
+        }
 
         
         /* User Admin */
         def adminUser = new User(username: 'martin@gmail.com', password: 'password').save(flush:true)
         println("new user -> " + adminUser)
-         UserRole.create adminUser, adminRole
+        UserRole.create adminUser, adminRole
 
-         UserRole.withSession {
+        UserRole.withSession {
             it.flush()
             it.clear()
          }
@@ -92,36 +99,36 @@ class BootStrap {
             println("Salon agregado a BD")
         }
         /* El resto del codigo */
-       /*  def salon3 = new Salon(nombre:'Zafiro', usuario:propUser, direccion:'La Carrera', telefono:'3834333333', capacidad:300, precio:1000.0, tipoSalon:'normal')
+        def salon3 = new Salon(nombre:'Zafiro',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:clientUser.getPropietario(), direccion:'La Carrera', telefono:'3834333333', capacidad:300, precio:1000.0, tipoSalon:'normal')
         if(!salon3.save(flush:true)){
             salon3.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
         }
-        def salon4 = new Salon(nombre:'Ruby', usuario:propUser2, direccion:'Piedra Blanca', telefono:'3834444444', capacidad:200, precio:55000.0, tipoSalon:'normal')
+        def salon4 = new Salon(nombre:'Ruby',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:clientUser.getPropietario(), direccion:'Piedra Blanca', telefono:'3834444444', capacidad:200, precio:55000.0, tipoSalon:'normal')
         if(!salon4.save(flush:true)){
             salon4.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
         }
-        def salon5 = new Salon(nombre:'Diamante', usuario:propUser2, direccion:'San Isidro', telefono:'3834555555', capacidad:1000, precio:35500.0, tipoSalon:'normal')
+        def salon5 = new Salon(nombre:'Diamante',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:propUser.getPropietario(), direccion:'San Isidro', telefono:'3834555555', capacidad:1000, precio:35500.0, tipoSalon:'normal')
         if(!salon5.save(flush:true)){
             salon5.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
         }
-        def salon6 = new Salon(nombre:'Carbon', usuario:propUser2, direccion:'Capital', telefono:'3834666666', capacidad:450, precio:42000.0, tipoSalon:'normal')
+        def salon6 = new Salon(nombre:'Carbon',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:propUser.getPropietario(), direccion:'Capital', telefono:'3834666666', capacidad:450, precio:42000.0, tipoSalon:'normal')
         if(!salon6.save(flush:true)){
             salon6.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
         }
-        def salon7 = new Salon(nombre:'Perla', usuario:propUser2, direccion:'Capital', telefono:'3834777777', capacidad:3000, precio:2358.0, tipoSalon:'normal')
+        def salon7 = new Salon(nombre:'Perla',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:propUser.getPropietario(), direccion:'Capital', telefono:'3834777777', capacidad:3000, precio:2358.0, tipoSalon:'normal')
         if(!salon7.save(flush:true)){
             salon7.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
-        } */
+        }
     }
     def destroy = {
     }
