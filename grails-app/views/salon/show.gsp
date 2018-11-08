@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="mainSalon" />
+          <meta name="layout" content="user_account"/>
     </head>
     <body>
         <g:form resource="${this.salon}" method="DELETE">
             <a href="#show-salon" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-            <h1>Mi Salon</h1>
+            <h1>Datos del salon</h1>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Nombre:</label>
                 <div class="col-sm-7">

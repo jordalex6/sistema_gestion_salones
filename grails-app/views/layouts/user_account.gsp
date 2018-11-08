@@ -20,7 +20,7 @@
                     <div class="row">
                          <div class="col">
                             <h4>Mis Datos</h4>
-                            <g:link class="dropdown-item" controller="user" action="create">Datos Usuario</g:link>
+                            <g:link class="dropdown-item" controller="user" action="show">Datos Usuario</g:link>
                          </div>
                           <div class="col">
                             <h4>Reservas</h4>
@@ -30,7 +30,10 @@
                           <div class="col">
                             <h4>Salon Evento</h4>
                             <g:link class="dropdown-item" controller="salon" action="create">Publicar Salon</g:link>
-                            <g:link class="dropdown-item" controller="user" action="create">Mis Salones</g:link>
+                            <sec:access expression="hasRole('ROLE_PROPIETARIO')">
+                                <g:link class="dropdown-item" controller="salon" action="index">Mis Salones</g:link>
+                                <g:link class="dropdown-item" controller="salon" action="index">Reservas</g:link>
+                            </sec:access>
                          </div>
                     </div>
                 </div>

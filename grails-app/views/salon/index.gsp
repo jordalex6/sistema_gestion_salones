@@ -1,17 +1,16 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <meta name="layout" content="mainSalon"/> <!--no se como mostrar los dos main uno abajo del otro-->
+    <meta name="layout" content="user_account"/>
 </head>
 <body>
     <!--acá van todos los salones, ver que está al pedo de todo esto jaja-->
     <div id="list-salon" class="content scaffold-list" role="main">
         <h1>Lista de Salones</h1>
         <f:table collection="${salonList}" />
-        <div class="pagination">
+<%--         <div class="pagination">
             <g:paginate total="${salonCount ?: 0}" />
-        </div>
+        </div> --%>
     </div>
     <%-- <h1>Lista de Salones</h1>
     <table>
