@@ -36,7 +36,7 @@ SzService szService
 	    }
         
     }
-    def baja() {
+    def mostrarReservaUsuario() {
         User user = springSecurityService.isLoggedIn() ?
         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
         null
@@ -45,7 +45,7 @@ SzService szService
 
     def darBaja() {
       stockService.eliminarReserva(new Long(params.id))
-      redirect(action:"mostrarSalon")
+      redirect(action:"mostrarReservaUsuario")
     }
 
     def index(Integer max) {

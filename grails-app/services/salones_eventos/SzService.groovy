@@ -13,7 +13,7 @@ class SzService {
       return reservas
    
     }
-    List reservas(Cliente id){
+    List reservasClientes(Cliente id){
       def reservas =  Reserva.findAllByCliente(id)
       return reservas
    
