@@ -4,7 +4,7 @@ import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
+@Secured('permitAll')
 class UserController {
  
     UserService userService
@@ -17,7 +17,7 @@ class UserController {
         params.max = Math.min(max ?: 10, 100)
         respond userService.list(params), model:[userCount: userService.count()]
     }
-
+    @Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
     def show() {
         User user = springSecurityService.isLoggedIn() ?
             springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
@@ -32,11 +32,9 @@ class UserController {
                 println("show authorities = " + authorities)
                 respond user, view:'show'
             }
-        }
-        
+        } 
     }
 
-    @Secured('ROLE_ADMIN')
     def create() {
         respond new User(params)
     }
@@ -49,6 +47,11 @@ class UserController {
 
         try {
             userService.save(user)
+            UserRole.create user, Role.findById(1)
+                UserRole.withSession {
+                    it.flush()
+                    it.clear()
+                } 
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
@@ -62,7 +65,7 @@ class UserController {
             '*' { respond user, [status: CREATED] }
         }
     }
-
+    @Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
     def edit() {
 
          User user = springSecurityService.isLoggedIn() ?
@@ -81,7 +84,7 @@ class UserController {
             }
         }
     }
-
+    @Secured(['ROLE_CLIENT','ROLE_PROPIETARIO'])
     def update(User user) {
         if (user == null) {
             notFound()
