@@ -89,7 +89,7 @@
                                     <!--Eres Nuevo? <a href="Laboratorio-Registrame.html"><b>Registrarme</b></a>-->
                                     <div class="bottom text-center" style="color: red;">
                                         Nuevo aquí? 
-                                        <g:link controller="contacto" action="showRegistro">Registrate AQUI</g:link></a>
+                                        <g:link controller="user" action="create">Registrate AQUI</g:link>
                                     </div>      
                                 </div>									
                             </li>
