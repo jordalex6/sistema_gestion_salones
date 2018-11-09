@@ -18,7 +18,7 @@ class ReservaController {
 
    /* Reservas para un derminado salon */
     def mostrarReservasSalon(Salon id) {
-      response reservaService.reservas(id), view:"mostrarReservasSalon" 
+    [mostrarReservasSalon: reservaService.reservas(id)] 
     }
     /* Crear Reserva */
     def reservarSalon() {
