@@ -6,7 +6,7 @@
     <body>
         <a href="#edit-salon" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <h1>Editar Mi Salón</h1>
-        <g:form resource="${this.salon}" method="PUT">
+        <%-- <g:uploadForm resource="${this.salon}" method="PUT">
             <g:hiddenField name="version" value="${this.user?.version}" />
             <div class="form-group row mt-2">
                 <label for="nombre" class="col-sm-4 col-form-label">Nombre:</label>
@@ -38,10 +38,25 @@
                     <input type="number" class="form-control" name="precio" value="${this.salon.precio}">
                 </div>
             </div>
+            <div class="form-group row mt-2">
+                <label for="imagen" class="col-sm-4 col-form-label">Imagen:</label>
+                <div class="col-sm-7">
+                    <input type="file" class="form-control" name="imagen" value="${this.salon.imagen}">
+                </div>
+            </div>
             <fieldset class="buttons mt-3">
                 <input type="submit" value="Actualizar" />
             </fieldset>
-        </g:form>
+        </g:uploadForm> --%>
+        <g:uploadForm resource="${this.salon}" method="POST"> <!--acá cambie el metrodo put por post y se pudo editar la foto del salon-->
+            <g:hiddenField name="version" value="${this.salon?.version}" />
+            <fieldset class="form">
+                <f:all bean="salon" except="reserva, propietario"/>
+            </fieldset>
+            <fieldset class="buttons">
+                <input type="submit" value="Actualizar" />
+            </fieldset>
+        </g:uploadForm>
     </body>
 </html>
 

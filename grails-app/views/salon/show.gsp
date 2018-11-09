@@ -46,8 +46,7 @@
                 <div class="col-sm-7">
                     <input type="text" readonly class="form-control-plaintext" id="staticPhome" value="${this.salon.precio}">
                 </div>
-            </div>
-            <!--esto todavia no funciona-->
+            </div>            
             <div class="form-group row">
                 <label for="staticPhome" class="col-sm-4 col-form-label">Imagen:</label>
                 <div class="col-sm-7">            

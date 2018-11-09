@@ -1,10 +1,11 @@
 package salones_eventos
 
 import groovy.transform.ToString
+import grails.rest.Resource
 
+/* @Resource(uri='/reservas') */
 @ToString(includeNames=true, includePackage=false)
 class Reserva {
-
 
    /*  Date fecha_actual */
     Date dateCreated

@@ -2,7 +2,7 @@ package salones_eventos
 
 class BootStrap {
 
-    def init = { servletContext ->
+    def init = { servletContext -> 
 
         /* Roles */
         def clientRole = new Role(authority: "ROLE_CLIENT").save(flush:true)

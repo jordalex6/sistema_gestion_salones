@@ -17,9 +17,8 @@ class ReservaController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
    /* Reservas para un derminado salon */
-   @Secured(['ROLE_PROPIETARIO'])
-    def mostrarSalon(Salon id) {
-      [mostrarSalon: reservaService.reservas(id)]
+    def mostrarReservasSalon(Salon id) {
+      response reservaService.reservas(id), view:"mostrarReservasSalon" 
     }
     /* Crear Reserva */
     def reservarSalon() {
