@@ -1,7 +1,6 @@
 package salones_eventos
 
 class Reserva {
-@Resource(uri='/reservas')
 
     Date fecha_actual
     Date fecha_reserva
