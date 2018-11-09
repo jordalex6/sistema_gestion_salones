@@ -96,7 +96,7 @@ dataSource:
     jmxExport: true
     driverClassName: org.postgresql.Driver
     username: postgres
-    password: '12345jor'
+    password: '123456'
 
 environments:
     development:
