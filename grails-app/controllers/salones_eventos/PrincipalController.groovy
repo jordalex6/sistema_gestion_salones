@@ -16,6 +16,23 @@ class PrincipalController {
         params.max = Math.min(max ?: 10, 100)
         respond miSalonService.list(params), model:[salonCount: miSalonService.count()], view:"/salones_index"
     }
+    
+    def index2() {
+        User user = springSecurityService.isLoggedIn() ?
+            springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+            null
+	    if(user!=null){
+    	    respond miSalonService.listarSalonesPorPropietario(user.getPropietario()), model:[salonCount: miSalonService.count()]
+	    }else{
+		    println("Falla al obtener el usuario")
+	    }
+    }
+
+    def verImagen = {
+        def salon = Salon.get(params.id)      
+        response.outputStream << salon.imagen
+        response.outputStream.flush()      
+    }
 
     def show(Long id) {
         Salon salon = miSalonService.get(id)

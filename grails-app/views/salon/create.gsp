@@ -6,25 +6,41 @@
 <body>
     <%-- <g:uploadForm action="save" resource="${this.salon}" method="POST">
         <fieldset class="form">
-            <label for="nombre">Nombre</label>
-            <g:textField name="nombre"/>
-            <label for="direccion">Direccion</label>
-            <g:textField name="direccion"/>
-            <label for="telefono">Telefono</label>
-            <g:textField name="telefono"/>
-            <label for="tipoSalon">Tipo</label>
-            <select name="tipoSalon">
-                <option value="1">normal</option>
-                <option value="2">vip</option>
-            </select>
-            <br><br>
-            <label for="capacidad">Capacidad</label>
-            <g:field type="number" name="capacidad" min="0" required="true"/>
-            <label for="precio">Precio</label>
-            <g:field type="number" name="precio" min="0" required="true"/>
-            <!--falta ver como cargo la imagen-->
-            <label for="imagen">Imagen del Salón</label>
-            <input type="file" name="imagen" />
+            <div class="fieldcontain required">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" required value id="nombre">                
+            </div>
+            <div class="fieldcontain required">
+                <label for="descripcion">Descripcion::</label>
+                <input type="text" name="descripcion" required value id="descripcion">                
+            </div>
+            <div class="fieldcontain required">
+                <label for="direccion">Direccion:</label>
+                <input type="text" name="direccion" required value id="direccion">                
+            </div>
+            <div class="fieldcontain required">
+                <label for="telefono">Telefono:</label>
+                <g:textField type="text" name="telefono" required value id="descripcion"/>
+            </div>
+            <div class="fieldcontain required">
+                <label for="tipoSalon">Tipo</label>
+                <select name="tipoSalon">
+                    <option value="1">normal</option>
+                    <option value="2">vip</option>
+                </select>
+            </div>
+            <div class="fieldcontain required">
+                <label for="capacidad">Capacidad:</label>
+                <g:textField type="number" name="capacidad" required value id="descripcion"/>
+            </div>
+            <div class="fieldcontain required">
+                <label for="precio">Precio:</label>
+                <g:textField type="number" name="precio" required value id="descripcion"/>
+            </div>
+            <div class="fieldcontain required">
+                <label for="imagen">Imagen:</label>
+                <g:textField type="file" name="imagen" required value id="descripcion"/>
+            </div> 
         </fieldset>
         <!--este boton no funciona-->
         <fieldset class="buttons">

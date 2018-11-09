@@ -12,7 +12,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <g:img class="d-block w-100" dir="images" file="salon_esmeralda.jpg" height="450"/>
+                                    <img src=${createLink(controller:"principal", action:"verImagen", id:"${salon.id}")} width='700'/>
                                 </div>
                                 <div class="carousel-item">
                                     <g:img class="d-block w-100" dir="images" file="salon_esmeralda.jpg" height="450"/>
@@ -29,8 +29,7 @@
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-                        </div>
-                        
+                        </div>                        
                         <h3>Descripción</h3>
                         <p>${salon.descripcion}</p>
                         <h3>Información</h3>
@@ -38,24 +37,20 @@
                             <div class="form-group col-md-6">
                                 <label for="staticDireccion">Dirección</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="${salon.direccion}">
-                            </div>
-                             
+                            </div>                             
                             <div class="form-group col-md-6">
                                 <label for="staticTelefono">Telefono</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticTelefono" value="${salon.telefono}">
-                            </div>
-                             
+                            </div>                             
                             <div class="form-group col-md-6">
                                 <label for="staticTipoSalon">Tipo de salón</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticTipoSalon" value="${salon.tipoSalon}">
-                            </div>
-                             
+                            </div>                             
                             <div class="form-group col-md-6">
                                 <label for="staticCapacidad">Capacidad</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticCapacidad" value="${salon.capacidad} personas">
                             </div>
                         </div> 
-
                     </div>
                     <div class="col-3 mt-3 div-right-border">
                         <h1 style=" font-size: 45px;font-weight: 100px;">${salon.nombre}</h1>

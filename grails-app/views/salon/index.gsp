@@ -30,24 +30,10 @@
                 <th>${salon.precio}</th>
                 <th>${salon.telefono}</th>
                 <th>${salon.tipoSalon}</th>                
-                <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>                
+                <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>
             </tr>
           </g:each>
         </table>
-    
-    <%--<g:each in="${salonList}" var="salon">
-        <g:link class="custom-card" controller="principal" action="show" id="${salon.id}">
-            <div class="card">
-                <g:img class="card-img-top" dir="images" file="salon_esmeralda.jpg" height="250"/>
-                <img src=${createLink(controller:"salon", action:"verImagen", id:"${this.salon.id}")} width='300' />
-                <div class="card-body">
-                    <h5 class="card-title">${salon.nombre}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">${salon.direccion}</h6>
-                    <p class="card-text">${salon.descripcion}</p>
-                </div>
-            </div>
-        </g:link>
-    </g:each>--%>
 </body>
 </html>
 

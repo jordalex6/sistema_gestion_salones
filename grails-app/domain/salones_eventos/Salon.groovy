@@ -1,7 +1,6 @@
 package salones_eventos
 import grails.rest.Resource
 
-
 import groovy.transform.ToString
 
 /* @Resource(uri='/salones') */

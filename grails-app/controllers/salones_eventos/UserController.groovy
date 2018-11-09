@@ -52,7 +52,7 @@ class UserController {
                 UserRole.withSession {
                     it.flush()
                     it.clear()
-                }  
+                }
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
