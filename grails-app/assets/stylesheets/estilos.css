@@ -134,32 +134,7 @@ body{
         position: relative;
     }
 /* } */
-@media(min-width: 1024px){
-    .nav-header {
-        background-image: none;
-        font-size: 13px;
-        font-weight: 400;
-    }
-}
-@media(min-width: 1024px){
-    .nav-header, .nav-header *, .nav-header :after, .nav-header :before {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-}
-@media(min-width: 1024px){
-    .nav-header {
-        font-family: "Proxima Nova",-apple-system,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-        color: #333;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
-        cursor: default;
-    }
-}
+
 
 h2 {
 	text-align:center;
@@ -188,8 +163,8 @@ a.custom-card:hover {
     flex-grow: 1;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    max-width: 300px;
-    min-width: 210px;
+/*     max-width: 300px;
+    min-width: 210px; */
     height: auto;
 }
 .filter-buttons{

@@ -3,49 +3,73 @@ package salones_eventos
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_CLIENT'])
 class ReservaController {
 
+    def springSecurityService
+
     ReservaService reservaService
-SzService szService
+
+    def miSalonService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-   
+   /* Reservas para un derminado salon */
+   @Secured(['ROLE_PROPIETARIO'])
     def mostrarSalon(Salon id) {
-
-
-      [mostrarSalon: szService.reservas(id)]
-      
-      
+      [mostrarSalon: reservaService.reservas(id)]
     }
-    def reservarSalon(Salon id ) {
+    /* Crear Reserva */
+    def reservarSalon() {
+        Salon salon = miSalonService.get(params.id)
+        println("Salon a reservar -> " + salon)
         User user = springSecurityService.isLoggedIn() ?
             springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
             null
-	    if(user!=null){
-    	    def salon =id
+	    
+        if(user!=null){
+            def reserva = new Reserva(params)
+            reserva.salon = salon 
+            reserva.cliente=user.getCliente()
+            reserva.precio = new BigDecimal(salon.precio*20/100)
+            reserva.cancelada=false
 
-        def reserva = new Reserva(params)
-        reserva.salon = salon 
-        reserva.precio=Bigdecimal (salon.precio)
-        reserva.cliente=user.getCliente()
-        java.util.Date fechaActual = new java.util.Date();
-        reserva.fecha_actual= fechaActual
-        respond reserva      
-         
-	    }
+            println("Objecto reserva parcial -> " + reserva)
+           /*  java.util.Date fechaActual = new java.util.Date();
+            reserva.fecha_actual= fechaActual */
+            respond reserva, view:'reservarSalon'      
+	    }else{
+            /* mandar a login  */
+        }
         
     }
-    def mostrarReservaUsuario() {
+    /* Reservas realizadas por un determinado cliente */
+    def mostrarReservaCliente() {
         User user = springSecurityService.isLoggedIn() ?
         springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
         null
-      [listado: szService.reservaCliente(user.getCliente())]
+
+        if(user!=null){
+           respond reservaService.reservasClientes(user.getCliente()), view:"mostrarReservasClientes" 
+        }
     }
 
-    def darBaja() {
-      stockService.eliminarReserva(new Long(params.id))
-      redirect(action:"mostrarReservaUsuario")
+        /* Reservas canceladas por un determinado cliente */
+    def mostrarReservaClienteCanceladas() {
+        User user = springSecurityService.isLoggedIn() ?
+        springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
+        null
+
+        if(user!=null){
+           respond reservaService.reservasClientesCanceladas(user.getCliente()), view:"mostrarReservasClientesCanceladas" 
+        }
+    }
+
+    def cancelarReserva(Long id) {
+      reservaService.cancelarReserva(id)
+      redirect(action:"mostrarReservaCliente")
     }
 
     def index(Integer max) {
@@ -70,14 +94,14 @@ SzService szService
         try {
             reservaService.save(reserva)
         } catch (ValidationException e) {
-            respond reserva.errors, view:'create'
+            respond reserva.errors, view:'reservarSalon'
             return
         }
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'reserva.label', default: 'Reserva'), reserva.id])
-                redirect reserva
+                redirect action:"mostrarReservaCliente"
             }
             '*' { respond reserva, [status: CREATED] }
         }
