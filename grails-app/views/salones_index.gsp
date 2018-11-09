@@ -17,10 +17,11 @@
                             <label for="precioSelect" class="col col-form-label">Precio</label>
                             <div class="col">
                                 <select class="form-control" id="precioSelect" name="precioSelect">
-                                    <option value="1">0 - 1000</option>
-                                    <option value="2">1000 - 5000</option>
-                                    <option value="3">5000 - 10000</option>
-                                    <option value="4">10000 - 15000</option>
+                                    <option value="1">--</option>
+                                    <option value="2">0 - 1000</option>
+                                    <option value="3">1000 - 5000</option>
+                                    <option value="4">5000 - 10000</option>
+                                    <option value="5">10000 - 15000</option>
                                 </select>
                             </div>
                         </div>
@@ -28,10 +29,11 @@
                             <label for="capacidadSelect" class="col col-form-label">Capacidad</label>
                             <div class="col">
                                 <select class="form-control" id="capacidadSelect" name="capacidadSelect" >
-                                    <option value="1">0 - 50</option>
-                                    <option value="2">50 - 100</option>
-                                    <option value="3">150 - 200</option>
-                                    <option value="4">200 - 300</option>
+                                    <option value="1">--</option>
+                                    <option value="2">0 - 50</option>
+                                    <option value="3">50 - 150</option>
+                                    <option value="4">150 - 200</option>
+                                    <option value="5">200 - 300</option>
                                 </select>
                             </div>
                         </div>
@@ -39,17 +41,16 @@
                             <label for="tipoSelect" class="col col-form-label">Tipo de salon</label>
                             <div class="col">
                                 <select class="form-control" id="tipoSelect" name="tipoSelect">
-                                    <option value="1">Normal</option>
-                                    <option value="2">Vip</option>
+                                    <option value="1">--</option>
+                                    <option value="2">Normal</option>
+                                    <option value="3">Vip</option>
                                 </select>
                             </div>
                         </div>
                         <div class="filter-buttons">
-                            <button type="submit" class="ui-button ui-button--primary">Aplicar</button>
-                            <button type="reset" class="ui-button ui-button--secondary">Restablecer</button>
-                        </div>
-                        <%--  <g:submitButton name="create" value="Aplicar"/>
-                        <input type="reset" value="Restablecer"/> --%>
+                            <g:link class="ui-button ui-button--secondary" controller="principal" action="index">Editar</g:link>                            
+                            <input type="reset" class="ui-button ui-button--secondary" value="Restablecer">
+                        </div>                         
                     </g:form>
                 </aside>
             </div> 
@@ -60,7 +61,8 @@
                            <%--  <div class="col-sm-6"> --%>
                             <g:link class="custom-card" controller="principal" action="show" id="${salon.id}">
                                 <div class="card">
-                                    <g:img class="card-img-top" dir="images" file="salon_esmeralda.jpg" height="250"/>
+                                    <%-- <g:img class="card-img-top" dir="images" file="salon_esmeralda.jpg" height="250"/> --%>
+                                    <img src=${createLink(controller:"principal", action:"verImagen", id:"${salon.id}")} width='700'/>
                                     <div class="card-body">
                                         <h5 class="card-title">${salon.nombre}</h5>
                                         <h6 class="card-subtitle mb-2 text-muted">${salon.direccion}</h6>
@@ -73,6 +75,18 @@
                     </div>
                 </div>
             </div>
+            <%-- <g:each in="${salonList}" var="salon">
+            <tr>
+                <td><g:link action="show" id="${salon.id}">${salon.nombre}</g:link></td>
+                <th>${salon.descripcion}</th>
+                <th>${salon.direccion}</th>
+                <th>${salon.capacidad}</th>
+                <th>${salon.precio}</th>
+                <th>${salon.telefono}</th>
+                <th>${salon.tipoSalon}</th>                
+                <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>
+            </tr>
+          </g:each> --%>
         </div>  
     </div>
 
