@@ -1,7 +1,7 @@
 package salones_eventos
 import grails.rest.Resource
 
- @Resource(uri='/salones')
+//@Resource(uri='/salones')
 
 class Salon {    
     String nombre
