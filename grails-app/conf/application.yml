@@ -96,13 +96,13 @@ dataSource:
     jmxExport: true
     driverClassName: org.postgresql.Driver
     username: postgres
-    password: '12345jor'
+    password: '123456'
 
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
-            url: "jdbc:postgresql://localhost:5432/salones"
+            dbCreate: update
+            url: "jdbc:postgresql://localhost:5432/SALONES"
     test:
         dataSource:
             dbCreate: update
