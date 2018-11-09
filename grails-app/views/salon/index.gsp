@@ -5,38 +5,49 @@
 </head>
 <body>
     <!--acá van todos los salones, ver que está al pedo de todo esto jaja-->
-    <div id="list-salon" class="content scaffold-list" role="main">
+    <%-- <div id="list-salon" class="content scaffold-list" role="main">
         <h1>Lista de Salones</h1>
         <f:table collection="${salonList}" />
-<%--         <div class="pagination">
-            <g:paginate total="${salonCount ?: 0}" />
-        </div> --%>
-    </div>
-    <%-- <h1>Lista de Salones</h1>
-    <table>
-        <tr>
+    </div>     --%>
+    
+        <table>
+          <tr>
             <th>Nombre</th>
+            <th>Descripcion</th>
             <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Tipo de Salon</th>
             <th>Capacidad</th>
             <th>Precio</th>
-            <th>Propietario</th>
-            <th>Imagenes</th>
-        </tr>
-        <g:each in="${index?}"> <!--preguntar a la profe por que no funciona-->
+            <th>Telefono</th>
+            <th>Tipo de Salon</th>
+            <th>Imagen</th>
+          </tr>
+          <g:each in="${salonList}" var="salon">
             <tr>
-                <td>${it.nombre}</td>
-                <td>${it.direccion}</td>
-                <td>${it.telefono}</td>
-                <td>${it.tipoSalon}</td>
-                <td>${it.capacidad}</td>
-                <td>${it.precio}</td>
-                <td>${it.propietario}</td>
-                <td>${it.imagen}</td>
+                <td><g:link action="show" id="${salon.id}">${salon.nombre}</g:link></td>
+                <th>${salon.descripcion}</th>
+                <th>${salon.direccion}</th>
+                <th>${salon.capacidad}</th>
+                <th>${salon.precio}</th>
+                <th>${salon.telefono}</th>
+                <th>${salon.tipoSalon}</th>                
+                <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>                
             </tr>
-        </g:each>
-    </table> --%>
+          </g:each>
+        </table>
+    
+    <%--<g:each in="${salonList}" var="salon">
+        <g:link class="custom-card" controller="principal" action="show" id="${salon.id}">
+            <div class="card">
+                <g:img class="card-img-top" dir="images" file="salon_esmeralda.jpg" height="250"/>
+                <img src=${createLink(controller:"salon", action:"verImagen", id:"${this.salon.id}")} width='300' />
+                <div class="card-body">
+                    <h5 class="card-title">${salon.nombre}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${salon.direccion}</h6>
+                    <p class="card-text">${salon.descripcion}</p>
+                </div>
+            </div>
+        </g:link>
+    </g:each>--%>
 </body>
 </html>
 
