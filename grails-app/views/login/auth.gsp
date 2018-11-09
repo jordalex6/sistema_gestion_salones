@@ -6,19 +6,19 @@
 </head>
 
 <body>
-	<div id="login">
-		<div class="inner">
-			<div class="fheader"><g:message code='springSecurity.login.header'/></div>
+<div id="login">
+	<div class="inner"> 
+		<div class="fheader"><g:message code='springSecurity.login.header'/></div>
 
 			<g:if test='${flash.message}'>
 				<div class="login_message">${flash.message}</div>
 			</g:if>
 
-			<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-				<p>
-					<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-					<input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
-				</p>
+		<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="on">
+			<p>
+				<label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
+				<input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
+			</p>
 
 				<p>
 					<label for="password"><g:message code='springSecurity.login.password.label'/>:</label>

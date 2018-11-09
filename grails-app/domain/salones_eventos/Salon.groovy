@@ -1,8 +1,10 @@
 package salones_eventos
 import grails.rest.Resource
 
-//@Resource(uri='/salones')
+import groovy.transform.ToString
 
+/* @Resource(uri='/salones') */
+@ToString(includeNames=true, includePackage=false)
 class Salon {    
     String nombre
     String descripcion   

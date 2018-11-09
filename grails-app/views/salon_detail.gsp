@@ -5,7 +5,7 @@
         <asset:stylesheet src="estilos.css"/>    
     </head>
     <body>
-         <div class="container">
+        <div class="container">
             <div class="detail-salon-container">
                 <div class="row mt-3">
                     <div class="col mt-3">
@@ -58,11 +58,13 @@
                         <p class="mt-3" style=" font-size: 30px;">$ ${salon.precio}</p>
                         <h3>Precio de la reserva</h3>
                         <p class="mt-3" style=" font-size: 20px;">$ ${reserva}</p>
-                        <g:link class="ui-button ui-button--primary" controller="Salon"  action="mostrarSalon" resource="${this.salon}">ver reservas a este salon</g:link>
-                        <g:link class="ui-button ui-button--primary" controller="Salon"  action="reservarSalon" resource="${this.salon}">reservar</g:link>                                                
+                        <g:link class="ui-button ui-button--primary" controller="reserva"  action="mostrarReservasSalon" id="${salon.id}">Ver reservas para este salon</g:link>
+                        <g:link class="ui-button ui-button--primary" controller="reserva"  action="reservarSalon" id="${salon.id}">Reservar</g:link>       
                     </div>
-                </div>                
-            </div>           
-         </div>      
+                </div>
+                
+            </div> 
+        </div>
+      
     </body>
 </html>

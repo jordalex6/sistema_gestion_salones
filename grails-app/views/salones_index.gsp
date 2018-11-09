@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <asset:stylesheet src="estilos.css"/>    
+    <%-- <asset:stylesheet src="estilos.css"/>    --%> 
     <!--esta linea hace salir el nombre de salon arriba de la lista-->
     <g:set var="entityName" value="${message(code: 'salon.label', default: 'Salon')}"/>
 </head>
@@ -75,19 +75,7 @@
                     </div>
                 </div>
             </div>
-            <%-- <g:each in="${salonList}" var="salon">
-            <tr>
-                <td><g:link action="show" id="${salon.id}">${salon.nombre}</g:link></td>
-                <th>${salon.descripcion}</th>
-                <th>${salon.direccion}</th>
-                <th>${salon.capacidad}</th>
-                <th>${salon.precio}</th>
-                <th>${salon.telefono}</th>
-                <th>${salon.tipoSalon}</th>                
-                <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>
-            </tr>
-          </g:each> --%>
-        </div>  
+        </div><%-- Fin --%>
     </div>
 
 </body>
