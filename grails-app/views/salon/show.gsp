@@ -59,7 +59,7 @@
             </g:if>
 
             <fieldset class="buttons">
-                <g:link action="edit" resource="${this.salon}">Editar</g:link>                
+                <g:link action="edit" resource="${this.salon}">Editar</g:link>
                 <input type="submit" value="Eliminar" onclick="return confirm('${message(code: 'Está seguro?')}');" />
             </fieldset>
         </g:form>
