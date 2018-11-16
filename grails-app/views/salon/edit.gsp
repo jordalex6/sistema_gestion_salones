@@ -3,49 +3,48 @@
     <head>
         <meta name="layout" content="user_account" />
     </head>
-    <body>
-        <a href="#edit-salon" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+    <body>        
         <h1>Editar Mi Salón</h1>
-        <%-- <g:uploadForm resource="${this.salon}" method="PUT">
-            <g:hiddenField name="version" value="${this.user?.version}" />
-            <div class="form-group row mt-2">
-                <label for="nombre" class="col-sm-4 col-form-label">Nombre:</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="nombre" disable value="${this.salon.nombre}">
+        <%-- <g:uploadForm action="save" method="POST">        
+            <fieldset class="form">
+                <div class="fieldcontain required">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" value="${this.salon.nombre}" required id="nombre">                
                 </div>
-            </div>
-            <div class="form-group row mt-2">
-                <label for="direccion" class="col-sm-4 col-form-label">Dirección:</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="direccion" value="${this.salon.direccion}">
+                <div class="fieldcontain required">
+                    <label for="descripcion">Descripcion::</label>
+                    <input type="text" name="descripcion" value="${this.salon.descripcion}" required id="descripcion">                
                 </div>
-            </div>
-            <div class="form-group row mt-2">
-                <label for="telefono" class="col-sm-4 col-form-label">Telefono:</label>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" name="telefono" value="${this.salon.telefono}">
+                <div class="fieldcontain required">
+                    <label for="direccion">Direccion:</label>
+                    <input type="text" name="direccion" value="${this.salon.direccion}" required id="direccion">                
                 </div>
-            </div>
-            <div class="form-group row mt-2">
-                <label for="capacidad" class="col-sm-4 col-form-label">Capacidad:</label>
-                <div class="col-sm-7">
-                    <input type="number" class="form-control" name="capacidad"value="${this.salon.capacidad}">
+                <div class="fieldcontain required">
+                    <label for="telefono">Telefono:</label>                
+                    <input type="text" name="telefono" pattern="[0-9]{10}" value="${this.salon.telefono}" required id="telefono"/>
                 </div>
-            </div>
-            <div class="form-group row mt-2">
-                <label for="precio" class="col-sm-4 col-form-label">Precio:</label>
-                <div class="col-sm-7">
-                    <input type="number" class="form-control" name="precio" value="${this.salon.precio}">
+                <div class="fieldcontain required">
+                    <label for="tipoSalon">Tipo:</label>
+                    <select name="tipoSalon" required id="tipoSalon">
+                        <option value="normal">normal</option>
+                        <option value="vip">vip</option>
+                    </select>
                 </div>
-            </div>
-            <div class="form-group row mt-2">
-                <label for="imagen" class="col-sm-4 col-form-label">Imagen:</label>
-                <div class="col-sm-7">
-                    <input type="file" class="form-control" name="imagen" value="${this.salon.imagen}">
+                <div class="fieldcontain required">
+                    <label for="capacidad">Capacidad:</label>
+                    <input type="number" name="capacidad" value="${this.salon.capacidad}" required min="0" id="capacidad"/>
                 </div>
-            </div>
-            <fieldset class="buttons mt-3">
-                <input type="submit" value="Actualizar" />
+                <div class="fieldcontain required">
+                    <label for="precio">Precio:</label>
+                    <input type="number decimal" name="precio" value="${this.salon.precio}" required id="precio"/>
+                </div>
+                <div class="fieldcontain">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" name="imagen" id="imagen">                
+                </div> 
+            </fieldset>        
+            <fieldset class="buttons">        
+                <g:submitButton name="edit" value="Actualizar"/>                
             </fieldset>
         </g:uploadForm> --%>
         <g:uploadForm resource="${this.salon}" method="POST"> <!--acá cambie el metrodo put por post y se pudo editar la foto del salon-->
