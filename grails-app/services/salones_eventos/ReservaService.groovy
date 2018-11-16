@@ -11,7 +11,7 @@ abstract class ReservaService implements IReservaService{
 
     }
     List reservas(Salon id){
-      def reservasa =  Reserva.findAllBySalon(id)
+      def reservasa =  Reserva.findAllBySalonAndCancelada(id,false)
       return reservasa
    
     }
