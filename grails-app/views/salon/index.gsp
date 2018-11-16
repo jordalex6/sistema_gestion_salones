@@ -4,11 +4,10 @@
     <meta name="layout" content="user_account"/>
 </head>
 <body>
-    <!--acá van todos los salones, ver que está al pedo de todo esto jaja-->
     <%-- <div id="list-salon" class="content scaffold-list" role="main">
         <h1>Lista de Salones</h1>
         <f:table collection="${salonList}" />
-    </div>     --%>
+    </div> --%>
     
         <table>
           <tr>
@@ -29,7 +28,7 @@
                 <th>${salon.capacidad}</th>
                 <th>${salon.precio}</th>
                 <th>${salon.telefono}</th>
-                <th>${salon.tipoSalon}</th>                
+                <th>${salon.tipoSalon}</th>
                 <th><img src=${createLink(controller:"salon", action:"verImagen", id:"${salon.id}")} width='300' /></th>
             </tr>
           </g:each>
