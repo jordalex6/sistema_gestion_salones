@@ -9,14 +9,18 @@ class PrincipalController {
 
     /* SalonService salonService */
     def miSalonService
+    def principalservice
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+    def index(Integer max) { 
         params.max = Math.min(max ?: 10, 100)
         respond miSalonService.list(params), model:[salonCount: miSalonService.count()], view:"/salones_index"
     }
-    
+    def salonesPorPrecio(Integer select) {
+        respond principalservice.salonesPorCapacidad(select), view:"/salones_index"
+    }
+
     def index2() {
         User user = springSecurityService.isLoggedIn() ?
             springSecurityService.loadCurrentUser() : // Para obtener Object user logueado

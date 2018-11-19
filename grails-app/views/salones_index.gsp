@@ -12,7 +12,7 @@
         <div class="row mt-3">
             <div class="col-3">
                 <aside class="filter-container">
-                    <g:form controller="salon" action="filtrarSalon" method="POST">
+                    <g:form controller="principal" action="salonesPorPrecio" method="POST">
                         <div class="form-group mt-2">
                             <label for="precioSelect" class="col col-form-label">Precio</label>
                             <div class="col">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="filter-buttons">
-                            <g:link class="ui-button ui-button--secondary" controller="principal" action="index">Editar</g:link>                            
+                            <g:link class="ui-button ui-button--secondary" controller="principal" action="index">Aplicar</g:link>                            
                             <input type="reset" class="ui-button ui-button--secondary" value="Restablecer">
                         </div>                         
                     </g:form>

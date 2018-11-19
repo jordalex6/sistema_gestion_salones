@@ -11,6 +11,9 @@ abstract class MiSalonService implements SalonService{
 
     }
 
+    Salon get(Serializable id){
+        return Salon.find("from Salon as s where s.id='${id}'")
+    }
     List<Salon> listarSalonesPorPropietario(Propietario propietario){
         return Salon.findAllByPropietario(propietario)
     }
