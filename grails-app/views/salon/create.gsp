@@ -4,59 +4,58 @@
     <meta name="layout" content="user_account"/>    
 </head>
 <body>
-    <%-- <g:uploadForm action="save" resource="${this.salon}" method="POST">
+    <g:uploadForm action="save" method="POST">
         <fieldset class="form">
             <div class="fieldcontain required">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" required value id="nombre">                
+                <input type="text" name="nombre" required id="nombre">                
             </div>
             <div class="fieldcontain required">
                 <label for="descripcion">Descripcion::</label>
-                <input type="text" name="descripcion" required value id="descripcion">                
+                <input type="text" name="descripcion" required id="descripcion">                
             </div>
             <div class="fieldcontain required">
                 <label for="direccion">Direccion:</label>
-                <input type="text" name="direccion" required value id="direccion">                
+                <input type="text" name="direccion" required id="direccion">                
             </div>
             <div class="fieldcontain required">
-                <label for="telefono">Telefono:</label>
-                <g:textField type="text" name="telefono" required value id="descripcion"/>
+                <label for="telefono">Telefono:</label>                
+                <input type="text" name="telefono" pattern="[0-9]{10}" required id="telefono"/>
             </div>
             <div class="fieldcontain required">
-                <label for="tipoSalon">Tipo</label>
-                <select name="tipoSalon">
-                    <option value="1">normal</option>
-                    <option value="2">vip</option>
+                <label for="tipoSalon">Tipo:</label>
+                <select name="tipoSalon" required id="tipoSalon">
+                    <option value="normal">normal</option>
+                    <option value="vip">vip</option>
                 </select>
             </div>
             <div class="fieldcontain required">
                 <label for="capacidad">Capacidad:</label>
-                <g:textField type="number" name="capacidad" required value id="descripcion"/>
+                <g:textField type="number" name="capacidad" required min="0" id="capacidad"/>
             </div>
             <div class="fieldcontain required">
                 <label for="precio">Precio:</label>
-                <g:textField type="number" name="precio" required value id="descripcion"/>
+                <g:textField type="number decimal" name="precio" required id="precio"/>
             </div>
             <div class="fieldcontain required">
                 <label for="imagen">Imagen:</label>
-                <g:textField type="file" name="imagen" required value id="descripcion"/>
+                <input type="file" name="imagen" required id="imagen">                
             </div> 
-        </fieldset>
-        <!--este boton no funciona-->
-        <fieldset class="buttons">
+        </fieldset>        
+        <fieldset class="buttons">            
             <g:submitButton name="create" value="Crear"/>
             <input type="reset"/>
         </fieldset>
-    </g:uploadForm> --%>
-    <!--esto funciona menos para la imagen-->
-    <g:uploadForm resource="${this.salon}" method="POST">
+    </g:uploadForm>
+    <!--este tambien funciona y es mas corto, pero es el del scaffolding modificado-->
+    <%-- <g:uploadForm resource="${this.salon}" method="POST">
         <fieldset class="form">
             <f:all bean="salon" except="reserva, propietario"/>
         </fieldset>
         <fieldset class="buttons">
             <g:submitButton name="create" value="Crear" />
         </fieldset>
-    </g:uploadForm>
+    </g:uploadForm> --%>
 </body>
 </html>
 
