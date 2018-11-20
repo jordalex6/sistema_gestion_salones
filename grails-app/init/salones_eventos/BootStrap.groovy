@@ -4,13 +4,13 @@ class BootStrap {
 
     def init = { servletContext -> 
 
-        /* Roles */
-        def clientRole = new Role(authority: "ROLE_CLIENT").save(flush:true)
+      // Roles 
+        /* def clientRole = new Role(authority: "ROLE_CLIENT").save(flush:true)
         def propRole = new Role(authority: "ROLE_PROPIETARIO").save(flush:true)
         def adminRole = new Role(authority: "ROLE_ADMIN").save(flush:true)
-
-        /* User Cliente */
-        def clientUser = new User(username: 'jordan@gmail.com', 
+ */
+        // User Cliente y propietario
+      /*   def clientUser = new User(username: 'jordan@gmail.com', 
                                 password: 'password', 
                                 cliente: new Cliente()
                                 ).save(flush:true)
@@ -30,27 +30,27 @@ class BootStrap {
             it.flush()
             it.clear()
         }
-        /* User Propietario */
-        def propUser = new User(username: 'sante@gmail.com', 
+        // User Cliente
+        def userTwo = new User(username: 'sante@gmail.com', 
                                 password: 'password', 
                                 cliente: new Cliente()
                                 ).save(flush:true)
                                 
-        println("new user propietario-> " + propUser)
-        UserRole.create propUser, clientRole
-        Propietario propietario2 = new Propietario(cuit:"27355016668", razonSocial:"La Tanita SRL")
+        println("new user propietario-> " + userTwo)
+        UserRole.create userTwo, clientRole */
+       /*  Propietario propietario2 = new Propietario(cuit:"27355016668", razonSocial:"La Tanita SRL")
 
-        propUser.setPropietario(propietario2)
-        propUser.save(flush:true)                      
-        println("update user client -> " + propUser)
+        userTwo.setPropietario(propietario2)
+        userTwo.save(flush:true)                      
+        println("update user client -> " + userTwo)
 
-        UserRole.create propUser, propRole
-        UserRole.withSession {
+        UserRole.create userTwo, propRole */
+      /*   UserRole.withSession {
             it.flush()
             it.clear()
-        }
-        /* User Cliente */
-        def clienUser = new User(username: 'sante2@gmail.com', 
+        } */
+        // User Cliente 
+/*         def clienUser = new User(username: 'sante2@gmail.com', 
                                 password: 'password', 
                                 cliente: new Cliente()
                                 ).save(flush:true)
@@ -62,18 +62,18 @@ class BootStrap {
         UserRole.withSession {
             it.flush()
             it.clear()
-        }
+        } */
         
-        /* User Admin */
-        def adminUser = new User(username: 'martin@gmail.com', password: 'password').save(flush:true)
+        // User Admin
+/*         def adminUser = new User(username: 'martin@gmail.com', password: 'password').save(flush:true)
         println("new user -> " + adminUser)
         UserRole.create adminUser, adminRole
 
         UserRole.withSession {
             it.flush()
             it.clear()
-        }
-
+        } */
+/* 
          def salon1 = new Salon(nombre:'Esmeralda', 
                                 descripcion:'Un salon con amplios y variados espacios, se ofrecen servicios de calidad acorde a sus necesidades',
                                 direccion:'Sumalao', 
@@ -101,7 +101,7 @@ class BootStrap {
         }else{
             println("Salon agregado a BD")
         }
-        /* El resto del codigo */
+        // El resto del codigo 
         def salon3 = new Salon(nombre:'Zafiro',  descripcion:'La Tanita ofrece su amplio complejo para realizar todo tipo de fiestas',propietario:clientUser.getPropietario(), direccion:'La Carrera', telefono:'3834333333', capacidad:300, precio:1000.0, tipoSalon:'normal')
         if(!salon3.save(flush:true)){
             salon3.errors.allErrors.each{println it}
@@ -131,7 +131,7 @@ class BootStrap {
             salon7.errors.allErrors.each{println it}
         }else{
             println("Salon agregado a BD")
-        }
+        } */
     }
     def destroy = {
     }

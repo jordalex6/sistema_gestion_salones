@@ -21,7 +21,7 @@
                 <td><g:link action="cancelarReserva" id="${reserva.id}">Cancelar</g:link></td>
                 <th>${reserva.salon.nombre} </th>
                 <th> <g:formatDate format="yyyy/MM/dd" date="${reserva.dateCreated}"/></th>
-                <th> <g:formatDate format="yyyy/MM/dd" date="${reserva.fecha_reserva}"/></th>
+                <th> <g:formatDate format="yyyy/MM/dd" date="${reserva.fechaReserva}"/></th>
                 <th>${reserva.precio} </th>
               </tr>
           </g:each>

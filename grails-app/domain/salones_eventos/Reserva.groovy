@@ -10,7 +10,7 @@ class Reserva {
    /*  Date fecha_actual */
     Date dateCreated
     Date lastUpdated
-    Date fecha_reserva
+    Date fechaReserva
     Integer cant_personas
     BigDecimal precio
     boolean cancelada
@@ -18,7 +18,7 @@ class Reserva {
 
     static constraints = {
        /*  fecha_actual (blank:false) */
-        fecha_reserva(blank:false, validator: {val, Reserva obj ->
+        fechaReserva(blank:false, validator: {val, Reserva obj ->
             if(val < new Date(System.currentTimeMillis())){
                 return ['Error']
             }
@@ -28,7 +28,7 @@ class Reserva {
                 return ['Error']
             }
         })
-        fecha_reserva(unique:"salon")
+        fechaReserva(unique:"salon")
         cant_personas blank:false, nullable:false
     }
 }

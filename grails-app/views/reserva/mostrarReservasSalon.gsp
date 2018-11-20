@@ -18,7 +18,7 @@
                 <g:each in="${mostrarReservasSalon?}">
                     <tr>
                       <th>${it.salon.nombre} </th>
-                      <th> <g:formatDate format="yyyy/MM/dd" date="${it.fecha_reserva}"/></th> 
+                      <th> <g:formatDate format="yyyy/MM/dd" date="${it.fechaReserva}"/></th> 
                     </tr>
                 </g:each>
             </table>

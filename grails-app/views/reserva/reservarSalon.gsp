@@ -29,7 +29,7 @@
                     <div class="form-group row mt-2">
                         <label for="fechaReserva" class="col-sm-4 col-form-label">¿Para cuando desea reservar?</label>                                        
                         <div class="col-sm-7">
-                        <g:datePicker id="fechaReserva" name="fecha_reserva" value="${new Date()}" precision="day" years="${2018..2030}"/>             
+                        <g:datePicker id="fechaReserva" name="fechaReserva" value="${new Date()}" precision="day" years="${2018..2030}"/>             
                         </div>
                     </div>
                     <div class="form-group row mt-2">

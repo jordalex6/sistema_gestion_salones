@@ -22,6 +22,12 @@ class UrlMappings {
 
         "/api/salones/tipo/$tipoSalon"(controller: "salonRest", parseRequest: true) {
         action = [GET: "salonesPorTipo"] }
+
+        "/api/reservas/salon/$salon"(controller: "reservaRest", parseRequest: true){
+            action = [GET: "reservasPorSalon"] }
+
+        "/api/reservas/fecha/$year?/$month?/$day"(controller: "reservaRest", parseRequest:true){
+            action = [GET: "reservasPorFecha"] }
     }
 }
  
