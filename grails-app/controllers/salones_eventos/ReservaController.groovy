@@ -21,9 +21,8 @@ class ReservaController {
     [mostrarReservasSalon: reservaService.reservas(id)] 
     }
     /* Crear Reserva */
-    def reservarSalon() {
-        Salon salon = miSalonService.get(params.id)
-        println("Salon a reservar -> " + salon)
+    def reservarSalon(Salon salon) {
+        println("ReservaSalon: salon -> " + salon)
         User user = springSecurityService.isLoggedIn() ?
             springSecurityService.loadCurrentUser() : // Para obtener Object user logueado
             null

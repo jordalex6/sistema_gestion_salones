@@ -59,7 +59,7 @@
                         <h3>Precio de la reserva</h3>
                         <p class="mt-3" style=" font-size: 20px;">$ ${reserva}</p>
                         <g:link class="ui-button ui-button--primary" controller="reserva"  action="mostrarReservasSalon" id="${salon.id}">Ver reservas para este salon</g:link>
-                        <g:link class="ui-button ui-button--primary" controller="reserva"  action="reservarSalon" id="${salon.id}">Reservar</g:link>       
+                        <g:link class="ui-button ui-button--primary" controller="reserva"  action="reservarSalon" id="${salon.id}">Reservar</g:link>        
                     </div>
                 </div>
                 

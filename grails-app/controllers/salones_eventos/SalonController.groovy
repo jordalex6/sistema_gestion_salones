@@ -34,7 +34,7 @@ class SalonController {
         response.outputStream << salon.imagen
         response.outputStream.flush()      
     }
-
+ 
     def show(Long id) {
         respond miSalonService.get(id)
     }
